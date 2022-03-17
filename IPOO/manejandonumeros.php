@@ -77,7 +77,7 @@ do{
             break;
 
         default:
-            # code...
+            $opcion = 0;
             break;
     }
 }while($opcion != 0);
