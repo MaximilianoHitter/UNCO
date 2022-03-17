@@ -51,6 +51,31 @@ do{
             print_r($coleccionNombres);
             break;
             
+        case '6':
+            echo "Ingrese un año: \n";
+            $anio = trim(fgets(STDIN));
+            $coleccionAniosBisiestos = calculoAniosBisiestos($anio);
+            print_r($coleccionAniosBisiestos);
+            break;
+
+        case '7':
+            echo "Primero se debe llenar el array A: \n";
+            $arrayA = llenarArray();
+            echo "Luego debemos llenar el array B: \n";
+            $arrayB = llenarArray();
+            $arrayFinal = concatenarArrays($arrayA, $arrayB);
+            print_r($arrayFinal);
+            break;
+
+        case '8':
+            echo "Primero se debe llenar el array 1: \n";
+            $array1 = llenarArray();
+            echo "Luego debemos llenar el array 2: \n";
+            $array2 = llenarArray();
+            $arrayConjunto = comprobarArrays($array1, $array2);
+            print_r($arrayConjunto);
+            break;
+
         default:
             # code...
             break;
@@ -111,7 +136,7 @@ function llenarArray(){
             $contador++;
         };
         
-    }while($num != 'X');
+    }while($num != 'X' || $num != 'x');
     return $arrayNumeros;
 };
 
@@ -125,4 +150,50 @@ function leerNombres($cantNombres){
         $coleccion[$i] = trim(fgets(STDIN));
     };
     return $coleccion;
+};
+
+/**Funcion para calcular cuantos años bisiestos hay desde el año 0 hasta un parametro
+ * @param int $year
+ * @return array
+ */
+function calculoAniosBisiestos($year){
+    $year = $year - intval(($year % 4));
+    $cont = 0;
+    $arrayAnios = [];
+    while($year > 0){
+        if((($year % 100) != 0) || (($year % 400) == 0) ){
+            $arrayAnios[$cont] = $year;
+            $cont++;    
+        };
+        $year = $year - 4;
+    };
+    return $arrayAnios;
+};
+
+/**Funcion para concatenar arrays 
+ * @param array $a 
+ * @param array $b 
+ * @return array
+*/
+function concatenarArrays($a, $b){
+    $arrayTotal = $a;
+    for ($i=0; $i < count($b); $i++) { 
+        $arrayTotal[(count($a) + $i)] = $b[$i];
+    };
+    return $arrayTotal;
+};
+
+/**Funcion para comprobar cuales elementos estan en el array1 y no en el array2 
+ * @param array $arr1 
+ * @param array $arr2
+ * @return array
+*/
+function comprobarArrays($arr1, $arr2){
+    $arrayResultado = [];
+    foreach ($arr1 as $key => $value) {
+        if(!in_array($value, $arr2)){
+            array_push($arrayResultado, $value);
+        };
+    };
+    return $arrayResultado;
 };
