@@ -1,7 +1,7 @@
 <?php
 $arrayGananciasPorMes = [];
 $arrayGananciasPorMes['Enero'] = ['cantidadRecaudada' => 100000, 'costoTotal' => 20000];
-$arrayGananciasPorMes['Febrero'] = ['cantidadRecaudada' => 90000, 'costoTotal' => 25000];
+$arrayGananciasPorMes['Febrero'] = ['cantidadRecaudada' => 90000, 'costoTotal' => 0];
 $arrayGananciasPorMes['Marzo'] = ['cantidadRecaudada' => 80000, 'costoTotal' => 23000];
 $arrayGananciasPorMes['Abril'] = ['cantidadRecaudada' => 70000, 'costoTotal' => 21000];
 $arrayGananciasPorMes['Mayo'] = ['cantidadRecaudada' => 70000, 'costoTotal' => 18000];
@@ -56,16 +56,28 @@ $arrayEmpleado[5] = [
     'sueldo' => 30000,
     'antiguedad' => 12
 ];
-$nombre = '';
-$sueldoTotal = 0;
 
-foreach ($arrayEmpleado as $key => $value) {
-    $sueldoTotal = $value['sueldo'];
-    if($value['antiguedad'] >= 10){
-        $sueldoTotal *= 1.5;
-    }else{
-        $sueldoTotal *= 1.25;
+$arrayResultado = calcularSueldos($arrayEmpleado);
+print_r($arrayResultado);
+
+/**Funcion para calcular sueldo de empleados 
+ * @param array $datos 
+ * @return array
+ */
+function calcularSueldos($datos){
+    $nombre = '';
+    $sueldoTotal = 0;
+    $arrayMedio = [];
+    foreach ($datos as $key => $value) {
+        $sueldoTotal = $value['sueldo'];
+        if ($value['antiguedad'] >= 10) {
+            $sueldoTotal *= 1.5;
+        } else {
+            $sueldoTotal *= 1.25;
+        };
+        $nombre = $value['nombre'];
+        array_push($arrayMedio, ['nombre' => $nombre, 'sueldoFinal' => $sueldoTotal]);
     };
-    $nombre = $value['nombre'];
-    echo "El empleado $nombre ha cobrado $sueldoTotal. \n";    
-};
+    return $arrayMedio;
+}
+
