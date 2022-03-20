@@ -37,7 +37,7 @@ do{
                 if($valorMin == $coleccion4[$i]){
                     $posicionMin = $i;
                 }elseif($valorMax == $coleccion4[$i]){
-                $posicionMax = $i;
+                    $posicionMax = $i;
                 };
             };
             echo "El valor mínimo es $valorMin y se encuentra en la posición $posicionMin \n";
@@ -60,12 +60,13 @@ do{
             break;
 
         case '7':
-            echo "Primero se debe llenar el array A: \n";
+            $arrayAMasB = concatenarArrays([1, 2, 3], [4, 5, 6]);
+            /*echo "Primero se debe llenar el array A: \n";
             $arrayA = llenarArray();
             echo "Luego debemos llenar el array B: \n";
             $arrayB = llenarArray();
-            $arrayFinal = concatenarArrays($arrayA, $arrayB);
-            print_r($arrayFinal);
+            $arrayFinal = concatenarArrays($arrayA, $arrayB);*/
+            print_r($arrayAMasB);
             break;
 
         case '8':
@@ -158,13 +159,11 @@ function leerNombres($cantNombres){
  * @return array
  */
 function calculoAniosBisiestos($year){
-    $year = $year - intval(($year % 4));
-    $cont = 0;
+    $year = $year - ($year % 4);
     $arrayAnios = [];
     while($year > 0){
         if((($year % 100) != 0) || (($year % 400) == 0) ){
-            $arrayAnios[$cont] = $year;
-            $cont++;    
+            array_push($arrayAnios, $year);  
         };
         $year = $year - 4;
     };
@@ -177,10 +176,11 @@ function calculoAniosBisiestos($year){
  * @return array
 */
 function concatenarArrays($a, $b){
-    $arrayTotal = $a;
+    $arrayTotal = array_merge($a, $b);
+    /*$arrayTotal = $a;
     for ($i=0; $i < count($b); $i++) { 
         $arrayTotal[(count($a) + $i)] = $b[$i];
-    };
+    };*/
     return $arrayTotal;
 };
 

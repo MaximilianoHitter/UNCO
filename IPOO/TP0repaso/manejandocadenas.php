@@ -15,7 +15,7 @@ do{
             $cadenaTexto = trim(fgets(STDIN));
             $arrayTexto = str_split($cadenaTexto);
             $needle = $arrayTexto[(count($arrayTexto) - 1)];
-            $apariciones = substr_count($cadenaTexto, $needle);
+            $apariciones = substr_count($cadenaTexto, $needle) -1;
             echo "El caracter $needle aparece $apariciones vez/veces en la cadena \n";
             break;
 

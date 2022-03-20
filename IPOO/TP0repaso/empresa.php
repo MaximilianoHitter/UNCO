@@ -76,7 +76,10 @@ function calcularSueldos($datos){
             $sueldoTotal *= 1.25;
         };
         $nombre = $value['nombre'];
-        array_push($arrayMedio, ['nombre' => $nombre, 'sueldoFinal' => $sueldoTotal]);
+        //$arryP = array('nombre' => $nombre, 'sueldoFinal' => $sueldoTotal);
+        //$arrayMedio[$key] = ['nombre' => $nombre, 'sueldoFinal' => $sueldoTotal];
+        array_push($arrayMedio, ['nombre' => $nombre, 
+                                                   'sueldoFinal' => $sueldoTotal]);
     };
     return $arrayMedio;
 }
