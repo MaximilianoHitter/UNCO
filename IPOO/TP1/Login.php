@@ -20,7 +20,7 @@ class Login{
         return $this->nombreUsuario;
     }
 
-    private function getContrasenia(){
+    public function getContrasenia(){
         return $this->contrasenia;
     }
 
@@ -32,7 +32,7 @@ class Login{
         $this->nombreUsuario = $nombre;
     }
 
-    private function setConstrasenia($pass){
+    public function setConstrasenia($pass){
         $this->contrasenia = $pass;
     }
 
@@ -58,7 +58,7 @@ class Login{
      * @param string $nuevaContrasenia
      * @return array 
      */
-    private function cambiarPass($nuevaPass){
+    public function cambiarPass($nuevaPass){
         $comprobacion = ['validacionFinal' => false, 'passAntigua' => false];
         if(!in_array($nuevaPass, $this->arrayContraseniasViejas)){
             if($nuevaPass != $this->contrasenia){
