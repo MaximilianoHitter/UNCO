@@ -52,7 +52,11 @@ class Reloj{
             $this->segundosInt = 0;
             if($this->minutosInt > 59){
                 $this->minutosInt = 0;
-                $this->horasInt += 1;
+                if($this->horasInt = 23){
+                    $this->horasInt = 0;
+                }else{
+                    $this->horasInt += 1;
+                };
             }else{
                 $this->minutosInt += 1;
             };
