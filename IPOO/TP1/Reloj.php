@@ -48,19 +48,19 @@ class Reloj{
     }
 
     public function incremento(){
-        $this->segundosInt += 1;
-        if($this->segundosInt > 59){
+        if($this->segundosInt >= 59){
             $this->segundosInt = 0;
-            $this->minutosInt += 1;
+            if($this->minutosInt > 59){
+                $this->minutosInt = 0;
+                $this->horasInt += 1;
+            }else{
+                $this->minutosInt += 1;
+            };
+            
         }else{
             $this->segundosInt += 1;
         };
-        if($this->minutosInt > 59){
-            $this->minutosInt = 0;
-            $this->horasInt += 1;
-        }else{
-            $this->minutosInt += 1;
-        };
+        
 
     }
 
