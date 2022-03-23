@@ -47,9 +47,9 @@ class Login{
     public function validarPass($passAValidar){
         $arrayResultado = ['validado' => false, 'passAntigua' => false];
         if($this->contrasenia === $passAValidar){
-            $arrayResultado = ['validado' => true];
+            $arrayResultado['validado'] = true;
         }elseif(in_array($passAValidar, $this->arrayContraseniasViejas)){
-            $arrayResultado = ['passAntigua' => true];
+            $arrayResultado['passAntigua'] = true;
         };
         return $arrayResultado;
     }
@@ -65,10 +65,10 @@ class Login{
                 array_unshift($this->arrayContraseniasViejas, $this->contrasenia);
                 $this->contrasenia = $nuevaPass;
                 $this->arrayContraseniasViejas[5] = '';
-                $comprobacion = ['validacionFinal' => true];
+                $comprobacion['validacionFinal'] = true;
             }
         }else{
-            $comprobacion = ['passAntigua' => true];
+            $comprobacion['passAntigua'] = true;
         };
         return $comprobacion;
     }
