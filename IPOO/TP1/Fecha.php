@@ -107,7 +107,7 @@ class Fecha{
         $fechaAnio = $arrayFecha[2];
         $objNuevaFecha = new Fecha($fechaDia, $fechaMes, $fechaAnio);
         for ($i=0; $i <= $diasInt; $i++) { 
-            $objNuevaFecha::incrementarUnDia();
+            $objNuevaFecha->incrementarUnDia();
         };
         return $objNuevaFecha;
     }

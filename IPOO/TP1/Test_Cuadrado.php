@@ -8,3 +8,4 @@ $objCuadrado = new Cuadrado($puntoA, $puntoB, $puntoC, $puntoD);
 //print_r($objCuadrado);
 echo $objCuadrado;
 echo $objCuadrado->area();
+
