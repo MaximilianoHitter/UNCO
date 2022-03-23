@@ -9,7 +9,8 @@ titulo.appendChild(tituloTexto);
 
 //Primer strong
 const elemento1 = document.createElement('strong');
-elemento1.textContent = 'Lista no ordenada:';
+elemento1.textContent = '&';
+console.log(elemento1);
 elemento1.style.fontWeight = 'bolder';
 
 //Segundo strong
@@ -100,4 +101,3 @@ body.appendChild(texto);
 body.appendChild(p1);
 body.appendChild(texto2);
 body.appendChild(p2);
-
