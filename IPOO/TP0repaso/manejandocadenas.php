@@ -7,7 +7,7 @@ do{
             echo "Ingrese una cadena de caracteres finalizada en punto: \n";
             $cadenaStr = trim(fgets(STDIN));
             $posicion = findNeedle($cadenaStr);
-            echo "La cadena posee $posicion caracteres \n";
+            echo "La cadena posee $posicion letras \n";
             break;
 
         case '2':
@@ -64,6 +64,12 @@ do{
  * @return int
 */
 function findNeedle($cadena){
-    $int = strpos($cadena, '.');
+    $arrayStr = split($cadena);
+    $string = 'abcdefghijklmnñopqrstuvwxyz';
+    $int = 0;
+    for($i = 0; $i < count($arrayStr); $i++){
+        if(str_contains($string, $arrayStr[$i])){
+            $int++;
+        }
     return $int;
 }
