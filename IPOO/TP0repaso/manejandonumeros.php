@@ -176,7 +176,7 @@ function calculoAniosBisiestos($year){
  * @return array
 */
 function concatenarArrays($a, $b){
-    $arrayTotal = array_merge($a, $b);
+    $arrayTotal = ($a + $b);
     /*$arrayTotal = $a;
     for ($i=0; $i < count($b); $i++) { 
         $arrayTotal[(count($a) + $i)] = $b[$i];
