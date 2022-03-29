@@ -75,6 +75,24 @@ class Banco{
         return $respuesta;
     }
 
+    /**Metodo para retornar el promedio de tramites cerrados por día
+     * @param void
+     * @return float
+     */
+    public function promTramitesCerradosDia(){
+        $contador = 0;
+        foreach ($this->arrayMostradores as $key1 => $value1) {
+            foreach ($value1->arrayTramites as $key2 => $value2) {
+                if($value2->getEstado == 'Cerrado'){
+                    $arrayFecha = explode('.', $fecha = $value2->getFechaCierre);
+                    if($arrayFecha[0] == date('m')){
+                        $contador++;
+                    }
+                }
+            }
+        }
+        return $contador;
+    }
 
     //toString
     public function __toString(){
