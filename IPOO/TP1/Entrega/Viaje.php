@@ -4,7 +4,6 @@ class Viaje{
     private $codigoViajeInt;
     private $destinoStr;
     private $cantMaximaPasajerosInt;
-    private $cantPasajerosInt = 0;
     private $arrayPasajeros = [];//['nombre'=>, 'apellido'=>, 'DNI'=>]
 
     //Construct
@@ -38,29 +37,9 @@ class Viaje{
     public function setCantMaximaPasajerosInt($cantMaximaPasajerosInt){
         $this->cantMaximaPasajerosInt = $cantMaximaPasajerosInt;
     }
- 
-    public function getCantPasajerosInt(){
-        return $this->cantPasajerosInt;
-    }
-
-    public function setCantPasajerosInt($cantPasajerosInt){
-        $this->cantPasajerosInt = $cantPasajerosInt;
-    }
 
     public function getArrayPasajeros(){
         return $this->arrayPasajeros;
-    }
-
-    public function aumentarPasajero(){
-        $cantidad = $this->getCantPasajerosInt();
-        $cantidad++;
-        $this->setCantPasajerosInt($cantidad);
-    }
-
-    public function decrementarPasajero(){
-        $cantidad = $this->getCantPasajerosInt();
-        $cantidad--;
-        $this->setCantPasajerosInt($cantidad);
     }
 
     public function setArrayPasajeros($arrayPasajeros){
@@ -79,7 +58,6 @@ class Viaje{
         }else{
             array_push($arrayNuevo, $pasajero);
             $this->setArrayPasajeros($arrayNuevo);
-            $this->aumentarPasajero();
             $boolean = true;
         }
         return $boolean;        
@@ -104,7 +82,6 @@ class Viaje{
             $key = array_search($pasajero, $arrayDeBusqueda);
             array_splice($arrayDeBusqueda, $key, 1);
             $this->setArrayPasajeros($arrayDeBusqueda);
-            $this->decrementarPasajero();
             $boolean = true;
         }
         return $boolean;
@@ -113,7 +90,7 @@ class Viaje{
     /**Metodo para modificar datos de un pasajero
      * @param array $pasajero
      * @param array $pasajero2
-     * @return string
+     * @return boolean
      */
     public function modificarDatosPasajero($pasajero, $pasajero2){
         $boolean = false;
@@ -131,7 +108,7 @@ class Viaje{
      * @param void
      * @return string
      */
-    public function pasajerosString(){
+    private function pasajerosString(){
         $strPasajeros = "";
         foreach ($this->getArrayPasajeros() as $key => $value) {
             $nombre = $value['nombre'];
@@ -149,11 +126,13 @@ class Viaje{
     //toString
     public function __toString(){
         $pasajeros = $this->pasajerosString();
+        $arrayPasajeros = $this->getArrayPasajeros();
+        $cantidad = count($arrayPasajeros);
         $str = "
         Viaje: {$this->getCodigoViajeInt()}.\n
         Destino: {$this->getDestinoStr()}.\n
         Cantidad de Asientos: {$this->getCantMaximaPasajerosInt()}.\n
-        Asientos ocupados: {$this->getCantPasajerosInt()}.\n
+        Asientos ocupados: $cantidad.\n
         Datos de Pasajeros: \n $pasajeros";
         return $str;
     }

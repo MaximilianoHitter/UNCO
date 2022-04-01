@@ -50,7 +50,7 @@ do{
                     echo "El pasajero ya se encuentra en el viaje.\n";
                 }
             }else{
-                echo "No hay mas lugare en este viaje.\n";
+                echo "No hay mas lugares en este viaje.\n";
             }            
             break;
 
