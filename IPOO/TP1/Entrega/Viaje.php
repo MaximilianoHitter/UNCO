@@ -1,6 +1,7 @@
 <?php
 class Viaje{
     //Atributos
+    
     private $codigoViajeInt;
     private $destinoStr;
     private $cantMaximaPasajerosInt;
