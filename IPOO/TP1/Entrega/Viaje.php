@@ -47,17 +47,31 @@ class Viaje{
         return $this->arrayPasajeros;
     }
 
+    public function aumentarPasajero(){
+        $this->cantPasajerosInt++;
+    }
+
+    public function decrementarPasajero(){
+        $this->cantPasajerosInt--;
+    }
+
+    public function setArrayPasajeros($arrayPasajeros){
+        $this->arrayPasajeros = $arrayPasajeros;
+    }
+
     /**Metodo para agregar pasajeros
      * @param array $pasajero ['nombre'=>, 'apellido'=>, 'DNI'=>]
      * @return string
      */
     public function agregarPasajero($pasajero){
         $str = '';   
+        $arrayNuevo = [];
         if(in_array($pasajero, $this->getArrayPasajeros())){
             $str = "Ese pasajero ya tiene un asiento en el viaje.\n";
         }else{
-            array_push($this->arrayPasajeros, $pasajero);
-            $this->cantPasajerosInt++;
+            array_push($arrayNuevo, $pasajero);
+            $this->setArrayPasajeros($arrayNuevo);
+            $this->aumentarPasajero();
             $str = "Pasajero añadido correctamente.\n";
         }
         return $str;        
@@ -69,7 +83,7 @@ class Viaje{
      */
     public function hayLugar(){
         $boolean = true;
-        if($this->getCantMaximaPasajerosInt() <= (count($this->arrayPasajeros))){
+        if($this->getCantMaximaPasajerosInt() <= (count($this->getArrayPasajeros()))){
             $boolean = false;
         }
         return $boolean;
@@ -78,9 +92,9 @@ class Viaje{
     public function quitarPasajero($pasajero){
         $str = "No existe dicho pasajero en este viaje.\n";
         if(in_array($pasajero, $this->getArrayPasajeros())){
-            $key = array_search($pasajero, $this->arrayPasajeros);
-            array_splice($this->arrayPasajeros, $key, 1);
-            $this->cantPasajerosInt--;
+            $key = array_search($pasajero, $this->getArrayPasajeros());
+            array_splice($this->getArrayPasajeros(), $key, 1);
+            $this->decrementarPasajero();
             $str = "Pasajero borrado.\n";
         }
         return $str;
@@ -94,8 +108,10 @@ class Viaje{
     public function modificarDatosPasajero($pasajero, $pasajero2){
         $str = "No se ha encontrado el pasajero.\n";
         if(in_array($pasajero, $this->getArrayPasajeros())){
-            $key = array_search($pasajero, $this->getArrayPasajeros() );
-            $this->arrayPasajeros[$key] = $pasajero2;            
+            $arrayDePaso = $this->getArrayPasajeros();
+            $key = array_search($pasajero, $arrayDePaso );
+            $arrayDePaso[$key] = $pasajero2;
+            $this->setArrayPasajeros($arrayDePaso);            
             $str = "El pasajero ha sido modificado.\n";
         };
         return $str;
@@ -107,7 +123,7 @@ class Viaje{
      */
     public function pasajerosString(){
         $strPasajeros = "";
-        foreach ($this->arrayPasajeros as $key => $value) {
+        foreach ($this->getArrayPasajeros() as $key => $value) {
             $nombre = $value['nombre'];
             $apellido = $value['apellido'];
             $dni = $value['DNI'];
