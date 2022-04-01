@@ -72,17 +72,17 @@ class Viaje{
      * @return string
      */
     public function agregarPasajero($pasajero){
-        $str = '';   
-        $arrayNuevo = [];
+        $boolean = false;   
+        $arrayNuevo = $this->getArrayPasajeros();
         if(in_array($pasajero, $this->getArrayPasajeros())){
-            $str = "Ese pasajero ya tiene un asiento en el viaje.\n";
+            $boolean = false;
         }else{
             array_push($arrayNuevo, $pasajero);
             $this->setArrayPasajeros($arrayNuevo);
             $this->aumentarPasajero();
-            $str = "Pasajero añadido correctamente.\n";
+            $boolean = true;
         }
-        return $str;        
+        return $boolean;        
     }
 
     /**Metodo para saber si se puede agregar mas personas
@@ -98,14 +98,16 @@ class Viaje{
     }
 
     public function quitarPasajero($pasajero){
-        $str = "No existe dicho pasajero en este viaje.\n";
-        if(in_array($pasajero, $this->getArrayPasajeros())){
-            $key = array_search($pasajero, $this->getArrayPasajeros());
-            array_splice($this->getArrayPasajeros(), $key, 1);
+        $boolean = false;
+        $arrayDeBusqueda = $this->getArrayPasajeros();
+        if(in_array($pasajero, $arrayDeBusqueda)){
+            $key = array_search($pasajero, $arrayDeBusqueda);
+            array_splice($arrayDeBusqueda, $key, 1);
+            $this->setArrayPasajeros($arrayDeBusqueda);
             $this->decrementarPasajero();
-            $str = "Pasajero borrado.\n";
+            $boolean = true;
         }
-        return $str;
+        return $boolean;
     }
 
     /**Metodo para modificar datos de un pasajero
@@ -114,15 +116,15 @@ class Viaje{
      * @return string
      */
     public function modificarDatosPasajero($pasajero, $pasajero2){
-        $str = "No se ha encontrado el pasajero.\n";
-        if(in_array($pasajero, $this->getArrayPasajeros())){
-            $arrayDePaso = $this->getArrayPasajeros();
+        $boolean = false;
+        $arrayDePaso = $this->getArrayPasajeros();
+        if(in_array($pasajero, $arrayDePaso)){            
             $key = array_search($pasajero, $arrayDePaso );
             $arrayDePaso[$key] = $pasajero2;
             $this->setArrayPasajeros($arrayDePaso);            
-            $str = "El pasajero ha sido modificado.\n";
+            $boolean = true;
         };
-        return $str;
+        return $boolean;
     }
 
     /**Metodo para hacer un string de ls pasajeros

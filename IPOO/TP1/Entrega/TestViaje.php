@@ -44,7 +44,11 @@ do{
             if($objViaje->hayLugar()){
                 echo "Ingrese los datos de un pasajero: \n";
                 $pasajero = tomarDatos();
-                echo $objViaje->agregarPasajero($pasajero);
+                if($objViaje->agregarPasajero($pasajero)){
+                    echo "Pasajero agregado con exito.\n";
+                }else{
+                    echo "El pasajero ya se encuentra en el viaje.\n";
+                }
             }else{
                 echo "No hay mas lugare en este viaje.\n";
             }            
@@ -53,7 +57,11 @@ do{
         case '5':
             echo "Ingrese los datos del pasajero a quitar: \n";
             $pasajero = tomarDatos();
-            echo $objViaje->quitarPasajero($pasajero);
+            if($objViaje->quitarPasajero($pasajero)){
+                echo "El pasajero se ha quitado.\n";
+            }else{
+                echo "No se ha encontrado al pasajero.\n";
+            }
             break;
 
         case '6':
@@ -61,7 +69,11 @@ do{
             $pasajero = tomarDatos();
             echo "Ingrese los nuevos datos: \n";
             $pasajero2 = tomarDatos();
-            echo $objViaje->modificarDatosPasajero($pasajero, $pasajero2);
+            if($objViaje->modificarDatosPasajero($pasajero, $pasajero2)){
+                echo "Se han modificado los datos.\n";
+            }else{
+                echo "No se ha encontrado al pasajero.\n";
+            }
             break;
 
             
