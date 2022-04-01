@@ -43,16 +43,24 @@ class Viaje{
         return $this->cantPasajerosInt;
     }
 
+    public function setCantPasajerosInt($cantPasajerosInt){
+        $this->cantPasajerosInt = $cantPasajerosInt;
+    }
+
     public function getArrayPasajeros(){
         return $this->arrayPasajeros;
     }
 
     public function aumentarPasajero(){
-        $this->cantPasajerosInt++;
+        $cantidad = $this->getCantPasajerosInt();
+        $cantidad++;
+        $this->setCantPasajerosInt($cantidad);
     }
 
     public function decrementarPasajero(){
-        $this->cantPasajerosInt--;
+        $cantidad = $this->getCantPasajerosInt();
+        $cantidad--;
+        $this->setCantPasajerosInt($cantidad);
     }
 
     public function setArrayPasajeros($arrayPasajeros){
