@@ -87,5 +87,21 @@ class Financiera{
             }
         }
     }
+    
+    /**Metodo para saber la cuota a pagar de un cierto préstamo
+     * @param int $idPrestamo
+     * @return int
+     */
+    public function informarCuotaPagar($idPrestamo){
+        $arrayPrestamos = $this->getColeccionPrestamos();
+        foreach ($arrayPrestamos as $key => $value) {
+            $identificador = $value->getIdentificacion();
+            if($identificador == $idPrestamo){
+                $prestamo = $value;
+                $cuotaAPagar = $prestamo->darSiguienteCuotaPagar();
+                return $cuotaAPagar;
+            }
+        }
+    }
 
 }
