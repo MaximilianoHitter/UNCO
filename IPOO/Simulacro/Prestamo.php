@@ -79,7 +79,7 @@ class Prestamo{
         $str = '';
         $arrayCuotas = $this->getColeccionCuotas();
         if(count($arrayCuotas) == 0){
-            $str = 'Préstamo no aprobado.';
+            $str = 'Préstamo no aprobado';
         }else{
             foreach ($arrayCuotas as $key => $value) {
                 $cuota = $value->__toString();
@@ -128,7 +128,7 @@ class Prestamo{
         $cantidadCuotas = $this->getCantidadCuotas();
         $montoPorCuota = $monto / $cantidadCuotas;
         $tazaInteres = $this->getTazaInteres();
-        $interes = ($monto - ($montoPorCuota*($numCuota-1))) * $tazaInteres; 
+        $interes = ($monto- ((($montoPorCuota)*($numCuota-1))))  * ($tazaInteres /10);
         return $interes;
     }
 
@@ -161,20 +161,18 @@ class Prestamo{
      */
     public function darSiguienteCuotaPagar(){
         $arrayCuotas = $this->getColeccionCuotas();
-        $cuotaNumero = 0;
-        $i = 1;
-        do {
-            $cuota = $arrayCuotas[$i];
-            $estadoCuota = $cuota->getCancelada();
-            if(!$estadoCuota){
-                $cuotaNumero = $i;
-                break;
+        $cuotaSeleccionada = null;
+        $patron = true;
+        foreach ($arrayCuotas as $key => $value) {
+            if($patron){
+                $cuota = $value;
+                $estadoCuota = $cuota->getCancelada();
+                if($estadoCuota == 'Sin pagar'){
+                    $patron = false;
+                    $cuotaSeleccionada = $value;
+                }
             }
-            $i++;
-        } while (count($arrayCuotas) == $i);
-        if($cuotaNumero == 0){
-            $cuotaNumero = null;
         }
-        return $cuotaNumero;
+        return $cuotaSeleccionada;
     }
 }

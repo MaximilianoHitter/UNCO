@@ -4,13 +4,14 @@ class Cuota{
     private $numero;
     private $montoCuota;
     private $montoInteres;
-    private $cancelada = false;
+    private $cancelada;
 
     //Constructo
     public function __construct($numero, $montoCuota, $montoInteres){
         $this->numero = $numero;
         $this->montoCuota = $montoCuota;
         $this->montoInteres = $montoInteres;
+        $this->cancelada = 'Sin pagar';
     }
 
     //Metodos getter y setter 
@@ -36,7 +37,12 @@ class Cuota{
         return $this->cancelada;
     }
     public function setCancelada($cancelada){
-        $this->cancelada = $cancelada;
+        if($cancelada){
+            $patron = 'Pagada';
+        }else{
+            $patron = 'Sin pagar';
+        }
+        $this->cancelada = $patron;
     }
 
     /**Metodo para convertir el valor del estado de la cuota
@@ -44,26 +50,26 @@ class Cuota{
      * @return string
      */
     private function estadoCuota(){
-        if($this->getCancelada()){
-            $str = "Activa.";
+        if($this->getCancelada() == 'Pagada'){
+            $str = "Pagada";
         }else{
-            $str = "Pagada.";
+            $str = "Sin pagar";
         }
         return $str;
     }
 
     //toString
     public function __toString(){
-        $estadoCuota = $this->estadoCuota();
+        //$estadoCuota = $this->estadoCuota();{}
         $str = "
-        Número de cuota: {$this->getNumero()}. Monto de la cuota: \${$this->getMontoCuota()}. Interés: \${$this->getMontoInteres()}. Estado de cuota: $estadoCuota
+        Número de cuota: {$this->getNumero()}. Monto de la cuota: \${$this->getMontoCuota()}. Interés: \${$this->getMontoInteres()}. Estado de cuota: {$this->getCancelada()}
         ";
         return $str;
     }
 
     /**Metodo para devolver el monto final de la cuota, monto + interes
-     * @param void
-     * @return float
+     * @param 
+     * @return
      */
     public function darMontoFinalCuota(){
         $montoCuota = $this->getMontoCuota();
