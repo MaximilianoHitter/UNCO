@@ -7,10 +7,10 @@ class Lectura{
 
     //Constructo
     public function __construct($objLibroEnLectura, $paginasLeidas){
-        if(!in_array($objLibroEnLectura, $this->coleccionLecturas)){
+        if(!in_array($objLibroEnLectura, Lectura::$coleccionLecturas)){
             $this->objLibroLeyendo = $objLibroEnLectura;
             $this->paginaRegistro = $paginasLeidas;
-            array_push($this->coleccionLecturas, $objLibroEnLectura);
+            array_push(Lectura::$coleccionLecturas, $objLibroEnLectura);
         }
         
     }
@@ -87,7 +87,7 @@ class Lectura{
 
     //getter de coleccion
     public function getColeccion(){
-        return $this->coleccionLecturas;
+        return Lectura::$coleccionLecturas;
     }
 
     /*voy a realizar 3 metodos setter diferentes
@@ -95,16 +95,16 @@ class Lectura{
     El segundo setColeccionBorrar servirá para que se borre toda la coleccion,
     El tercero setColeccionBorrarLibro servirá para buscar y borrar un libro de la coleccion*/
     public function setColeccionAgregar($objLibroAgregar){
-        array_push($this->coleccionLectura, $objLibroAgregar);
+        array_push(Lectura::$coleccionLecturas, $objLibroAgregar);
     }
 
     public function setColeccionBorrar(){
-        $this->coleccionLectura = [];
+        Lectura::$coleccionLecturas = [];
     }
 
     public function setColeccionBorrarLibro($objLibroABorrar){
-        $key = array_search($objLibroABorrar, $this->coleccionLectura);
-        unset($this->coleccionLectura[$key]);
+        $key = array_search($objLibroABorrar, Lectura::$coleccionLecturas);
+        unset(Lectura::$coleccionLecturas[$key]);
     }
 
     /**Metodo para saber si un libro parámetro ya esta en la coleccion
