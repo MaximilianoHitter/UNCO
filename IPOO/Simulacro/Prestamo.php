@@ -161,8 +161,18 @@ class Prestamo{
      */
     public function darSiguienteCuotaPagar(){
         $arrayCuotas = $this->getColeccionCuotas();
-        $cuotaSeleccionada = null;
+        $cuotaSeleccionada = [];
         $patron = true;
+        /*$i = 1;
+        while($patron && $i == count($arrayCuotas)){
+            $cuota = $arrayCuotas[$i];
+            $estadoCuota = $cuota->getCancelada();
+            if($estadoCuota == 'Sin pagar'){
+                $patron = false;
+                $cuotaSeleccionada = $cuota;
+            }
+            $i++;
+        }*/
         foreach ($arrayCuotas as $key => $value) {
             if($patron){
                 $cuota = $value;
