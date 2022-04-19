@@ -2,27 +2,44 @@
 require_once('Viaje.php');
 require_once('Pasajero.php');
 require_once('ResponsableV.php');
-echo "Bienvenido a Viaje Feliz!\n";
-echo "Ingrese los siguientes datos:\n";
-echo "----------------\n";
-echo "Ingrese el código del viaje: \n";
-$codigoViaje = trim(fgets(STDIN));
-echo "Ingrese el destino: \n";
-$destinoViaje = trim(fgets(STDIN));
-echo "Ingrese la máxima cantidad de asientos: \n";
-$cantAsientos = trim(fgets(STDIN));
-echo "Ingrese los datos del responsable del viaje: \n";
-echo "Número de empleado: \n";
-$numEmpleado = trim(fgets(STDIN));
-echo "Número de licencia: \n";
-$numLicencia = trim(fgets(STDIN));
-echo "Nombre: \n";
-$nombre = trim(fgets(STDIN));
-echo "Apellido: \n";
-$apellido = trim(fgets(STDIN));
 
-$objResponsable = new ResponsableV($numEmpleado, $numLicencia, $nombre, $apellido);
-$objViaje = new Viaje($codigoViaje, $destinoViaje, $cantAsientos, $objResponsable);
+
+echo "Para usar un viaje ya precargado ingrese si.\n";
+$patron = trim(fgets(STDIN));
+
+if($patron == 'si' || $patron == 'Si' || $patron == 'SI'){
+    $objResponsable = new ResponsableV(45, 1500, 'Pepe', 'Perez');
+    $objViaje = new Viaje(123456, 'Bariloche', 20, $objResponsable);
+    $objPasajero1 = new Pasajero('Juan', 'Escamilla', 12345678, 123456789);
+    $objPasajero2 = new Pasajero('Carlos', 'Fernandez', 45678945, 456789456);
+    $objPasajero3 = new Pasajero('Marcos', 'Ramirez', 45678912, 4567891346);
+    $objViaje->agregarPasajero($objPasajero1);
+    $objViaje->agregarPasajero($objPasajero2);
+    $objViaje->agregarPasajero($objPasajero3);
+}else{
+    echo "Bienvenido a Viaje Feliz!\n";
+    echo "Ingrese los siguientes datos:\n";
+    echo "----------------\n";
+    echo "Ingrese el código del viaje: \n";
+    $codigoViaje = trim(fgets(STDIN));
+    echo "Ingrese el destino: \n";
+    $destinoViaje = trim(fgets(STDIN));
+    echo "Ingrese la máxima cantidad de asientos: \n";
+    $cantAsientos = trim(fgets(STDIN));
+    echo "Ingrese los datos del responsable del viaje: \n";
+    echo "Número de empleado: \n";
+    $numEmpleado = trim(fgets(STDIN));
+    echo "Número de licencia: \n";
+    $numLicencia = trim(fgets(STDIN));
+    echo "Nombre: \n";
+    $nombre = trim(fgets(STDIN));
+    echo "Apellido: \n";
+    $apellido = trim(fgets(STDIN));
+
+    $objResponsable = new ResponsableV($numEmpleado, $numLicencia, $nombre, $apellido);
+    $objViaje = new Viaje($codigoViaje, $destinoViaje, $cantAsientos, $objResponsable);
+}
+
 $terminal = true;
 do{
     echo menu();

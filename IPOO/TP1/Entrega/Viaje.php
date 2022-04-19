@@ -63,13 +63,41 @@ class Viaje{
     public function agregarPasajero($objPasajero){
         $boolean = false;   
         $arrayNuevo = $this->getArrayPasajeros();
+        $count = count($arrayNuevo);
+        $noEncontrado = true;
+        $i = 0;
+        
+        $dniComparacion = $objPasajero->getNumDni();
+        while($noEncontrado && $i < $count){
+            $pasajeroSeleccionado = $arrayNuevo[$i];
+            $dniSeleccionado = $pasajeroSeleccionado->getNumDni();
+            if($dniSeleccionado == $dniComparacion){
+                $noEncontrado = false;
+            }
+            $i++;
+        }
+        if($noEncontrado){
+            $boolean = true;
+            //arrayPush
+            $count = count($arrayNuevo);
+            if($count == 0){
+                $arrayNuevo[0] = $objPasajero;
+            }else{
+                $arrayNuevo[$count] = $objPasajero;
+            }
+            $this->setArrayPasajeros($arrayNuevo);
+        }else{
+            $boolean = false;
+        }
+
+        /*
         if(in_array($objPasajero, $arrayNuevo)){
             $boolean = false;
         }else{
             array_push($arrayNuevo, $objPasajero);
             $this->setArrayPasajeros($arrayNuevo);
             $boolean = true;
-        }
+        }*/
         return $boolean;        
     }
 
@@ -90,12 +118,47 @@ class Viaje{
     public function quitarPasajero($objPasajero){
         $boolean = false;
         $arrayDeBusqueda = $this->getArrayPasajeros();
+        $i = 0;
+        $posicion = 0;
+        $dniComparacion = $objPasajero->getNumDni();
+        $noEncontrado = true;
+        //Busqueda del pasajero
+        while($noEncontrado || $i < count($arrayDeBusqueda)){
+            $pasajeroSeleccionado = $arrayDeBusqueda[$i];
+            $dniSeleccionado = $pasajeroSeleccionado->getNumDni();
+            if($dniSeleccionado == $dniComparacion){
+                $noEncontrado = false;
+                $posicion = $i;
+            }
+            $i++;
+        }
+        if(!$noEncontrado){
+            $arrayNuevoSinPasajero = [];
+            foreach ($arrayDeBusqueda as $key => $value) {
+                $count = count($arrayNuevoSinPasajero);
+                if($posicion != $key){
+                    if($count == 0){
+                        $arrayNuevoSinPasajero[0] = $value;
+                    }else{
+                        $arrayNuevoSinPasajero[$count] = $value;
+                    }
+                }
+            }
+            $this->setArrayPasajeros($arrayNuevoSinPasajero);
+            $boolean = true;
+        }else{
+            $boolean = false;
+        }
+        
+
+
+        /*
         if(in_array($objPasajero, $arrayDeBusqueda)){
             $key = array_search($objPasajero, $arrayDeBusqueda);
             array_splice($arrayDeBusqueda, $key, 1);
             $this->setArrayPasajeros($arrayDeBusqueda);
             $boolean = true;
-        }
+        }*/
         return $boolean;
     }
 
@@ -107,12 +170,33 @@ class Viaje{
     public function modificarDatosPasajero($objPasajero, $objPasajero2){
         $boolean = false;
         $arrayDePaso = $this->getArrayPasajeros();
-        if(in_array($objPasajero, $arrayDePaso)){            
+        $count = count($arrayDePaso);
+        $noEncontrado = true;
+        $i = 0;
+        $posicion = 0;
+        $dniComparacion = $objPasajero->getNumDni();
+        //Busqueda del pasajero
+        while($noEncontrado || $i < $count){
+            $pasajeroSeleccionado = $arrayDePaso[$i];
+            $dniSeleccionado = $pasajeroSeleccionado->getNumDni();
+            if($dniComparacion == $dniSeleccionado){
+                $noEncontrado = false;
+                $posicion = $i;
+                $boolean = true;
+            }
+            $i++;
+        }
+        if(!$noEncontrado){
+            $arrayDePaso[$posicion] = $objPasajero2;
+
+        }
+
+        /*if(in_array($objPasajero, $arrayDePaso)){            
             $key = array_search($objPasajero, $arrayDePaso );
             $arrayDePaso[$key] = $objPasajero2;
             $this->setArrayPasajeros($arrayDePaso);            
             $boolean = true;
-        };
+        };*/
         return $boolean;
     }
 
@@ -126,13 +210,6 @@ class Viaje{
             $objPasajero = $value; 
             $string = $objPasajero->__toString();
             $strPasajeros.= $string;
-            /*$nombre = $objPasajero->getNombre();
-            $apellido = $objPasajero->getApellido();
-            $dni = $objPasajero->getNumDni();
-            $strPasajeros .= "
-            Nombre: $nombre.\n
-            Apellido: $apellido.\n
-            DNI: $dni.\n";*/
         }
         return $strPasajeros;
     }
