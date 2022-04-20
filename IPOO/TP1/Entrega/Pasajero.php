@@ -52,7 +52,8 @@ class Pasajero{
         $apellido = $this->getApellido();
         $dni = $this->getNumDni();
         $telefono = $this->getTelefono();
-        $str = "*-----*
+        $str = "
+        *-----*
         Nombre: $nombre.\n
         Apellido: $apellido.\n
         DNI: $dni.\n

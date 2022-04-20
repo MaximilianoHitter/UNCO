@@ -173,7 +173,7 @@ class Viaje{
         $i = 0;
         $posicion = 0;
         //Busqueda del pasajero
-        while($noEncontrado || $i < $count){
+        while($noEncontrado && $i < $count){
             $pasajeroSeleccionado = $arrayDePaso[$i];
             $dniSeleccionado = $pasajeroSeleccionado->getNumDni();
             if($dni == $dniSeleccionado){
@@ -222,7 +222,8 @@ class Viaje{
      * @return objeto
      */
     private function menuModificar($objPasajero){
-        $menuModificar = "1. Modificar nombre.\n
+        $menuModificar = "
+        1. Modificar nombre.\n
         2. Modificar apellido.\n
         3. Modificar dni.\n
         4. Modificar telefono.\n
@@ -281,7 +282,7 @@ class Viaje{
         Destino: {$this->getDestinoStr()}.\n
         Cantidad de Asientos: {$this->getCantMaximaPasajerosInt()}.\n
         Asientos ocupados: $cantidad.\n
-        Datos del responsable: $responsableString\n
+        Datos del responsable: \n$responsableString\n
         Datos de Pasajeros: \n $pasajeros";
         return $str;
     }
