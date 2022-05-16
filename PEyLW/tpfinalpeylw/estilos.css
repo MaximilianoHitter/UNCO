@@ -1,0 +1,68 @@
+body {
+    background-image: url('/idea2/img/tapiz.jpg');
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.contenido {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: bisque;
+    color: black;
+    text-align: center;
+    border: 10px solid red;
+    border-radius: 20px;
+}
+
+.nav-bar {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px auto;
+    align-items: center;
+}
+
+.nav-bar li {
+    background-color: rgb(204, 39, 39);
+    border: 5px solid black;
+    border-radius: 50%;
+    padding: 20px 15px;
+    width: 100px;
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.nav-bar li a {
+    color: white;
+    text-decoration: dotted;
+    padding-top: 5px;
+}
+
+.selected {
+    border: 5px dotted white;
+}
+
+h1 {
+    text-shadow: 5px 5px 5px red;
+}
+
+.contenido-nav {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    margin: 20px 20px;
+}
+
+.contenido-nav img {
+    height: 120px;
+    margin: 0px auto;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+}

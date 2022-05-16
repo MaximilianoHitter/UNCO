@@ -1,0 +1,12 @@
+Dominio: www.cartasymesas.com
+Proyecto:
+Somos Cartas y Mesas, una empresa con 10 años de antigüedad en el mercado del entretenimiento. Nos destacamos por nuestros juegos de naipes y cartas sumados a la gran colección de juegos de mesa que poseemos en nuestro catálogo. Nuestro lema es "Tanto en una carta de papel como un tablero de cartón nosotros ponemos la diversión". 
+
+Nuestra página se compone de las siguientes secciones.
+Inicio: aquí nos dedicamos a presentarnos, presentar nuestro rubro, comentar nuestros años de experiencia y como comenzó nuestra empresa. 
+Catálogo: en esta página se podrán encontrar nuestros juegos pudiendo filtrar y buscar los mismos por su tipo.
+Contacto: formulario de contacto para solicitarnos información o algún juego que necesites que sea por encargo.
+Juegos: en esta sección se podrá encontrar un link a cada uno de nuestros minijuegos que poseemos en la página.
+    Minijuegos:
+    Dados: una aplicación para lanzar los dados.
+    Carta al azar: una aplicación para obtener una carta al azar.
