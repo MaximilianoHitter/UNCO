@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1 class="titulo-head">Pagina del wowsito</h1>
+        <ul class="lista-nav">
+            <li>Inicio</li>
+            <li>Tienda</li>
+            <li>Libros</li>
+            <li>Productos</li>
+            <li>Galeria</li>
+        </ul>
+        <div class="sesion-usuario">
+            Bienvenido... asdasd <button>Cerrar session</button>
+        </div>
+    </header>
+    <div class="contenedor-datos">
+        <main>
+            <h2>Formulario de modificacion de cuenta</h2>
+            <p>
+                Solo se modificarán los datos que usted ingrese.
+            </p>
+            <form action="#" method="post">
+                <h4>Ingrese sus datos:</h4>
+                <p>
+                    <label for="nombre">Nombres:</label>
+                    <br>
+                    <input type="text" name="nombre">
+                </p>
+                <p>
+                    <label for="apellido">Apellidos:</label>
+                    <br>
+                    <input type="text" name="apellido">
+                </p>
+                <p>
+                    <label for="fechaNac">Fecha de Nacimiento:</label>
+                    <br>
+                    <input type="date" name="fechaNac" id="">
+                </p>
+                <p>
+                    <label for="edad">Edad:</label>
+                    <br>
+                    <input type="number" name="edad" id="">
+                </p>
+                <p>
+                    <label for="email">Email:</label>
+                    <br>
+                    <input type="email" name="email" id="">
+                </p>
+                <p>
+                    <label for="imagen">Link de imagen(suba su imagen a un servidor y copie el link):</label>
+                    <br>
+                    <input type="text" name="imagen" id="">
+                </p>
+                <p>
+                    <label for="nick">Nickname o apodo:</label>
+                    <br>
+                    <input type="text" name="nick">
+                </p>
+                <p>
+                    <label for="pass">Contraseña:</label>
+                    <br>
+                    <input type="password" name="pass" id="">
+                </p>
+                <p>
+                    <label for="estado">Seleccione su estado:</label>
+                    <br>
+                    <select name="estado" id="">
+                        <option value="activo">Activo</option>
+                        <option value="ocupado">Ocupado</option>
+                        <option value="desconectado">Desconectado</option>
+                        <option value="buscando">Buscando con quien jugar</option>
+                    </select>
+                </p>
+                <p>
+                    <button type="submit">¡Modificar datos!</button>
+                </p>
+                
+            </form>
+        </main>
+        <aside>
+            <h4>Tus datos:</h4>
+            <div class="imagenUsuario">
+                <img src="guest.webp" alt="" height="100px" width="100px" class="imagenUsuario">
+            </div>
+            
+            <ul>
+                <li>Nombres:</li>
+                <li>Apellidos:</li>
+                <li>Fecha de Nacimiento:</li>
+                <li>Edad:</li>
+                <li>Email:</li>
+                <li>Link imagen:</li>
+                <li>Nickname:</li>
+                <li>Contraseña:</li>
+                <li>Estado:</li>
+            </ul>  
+        </aside>
+
+    </div>
+    <footer>
+        Todos los derechos reservados - Maximiliano Ariel Hitter - 2022
+    </footer>
+</body>
+</html>
