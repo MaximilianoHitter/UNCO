@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./idea2/img/Everaldo-Crystal-Clear-App-Card-game.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="estilos.css" />
+
+    <title>Cartas y Mesas</title>
+</head>
+
+<body>
+    <div class="contenido">
+        <header class="header">
+            <h1>CARTAS Y MESAS</h1>
+            <div class="contenido-nav">
+                <img src="./idea2/img/mazo/mazocambiado/01trebol.png" alt="" />
+
+                <ul class="nav-bar">
+                    <li class="selected">
+                        <a href="inicio.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="catalogo.html">Catálogo</a>
+                    </li>
+                    <li>
+                        <a href="contacto.html">Contacto</a>
+                    </li>
+                    <li>
+                        <a href="juegos.html">MiniJuegos</a>
+                    </li>
+                </ul>
+
+                <img src="./idea2/img/mazo/mazocambiado/1pica.png" alt="" />
+            </div>
+        </header>
+        <main>
+            <h1>¡Complete este formulario para contactarse con nosotros!</h1>
+
+            <form action="#" method="post" class="formulario">
+                <p>
+                    <label for="fechaInput">Ingrese su fecha de nacimiento:</label>
+                    <br>
+                    <input type="text" name="fechaInput" class="fechaInput" placeholder="dd/mm/aaaa" />
+
+                </p>
+                <p>
+                    <label for="edadInput">Ingrese su edad:</label>
+                    <br>
+                    <input type="number" name="edadInput" class="edadInput" placeholder="27" />
+                </p>
+                <p>
+                    <label for="importeInput">Ingrese su salario:</label>
+                    <br>
+                    <input type="number" name="importeInput" class="importeInput" placeholder="10000.50" />
+                </p>
+                <p>
+                    <label for="emailInput">Ingrese su email:</label>
+                    <br>
+                    <input type="email" name="emailInput" class="emailInput" placeholder="pepito@pepe.com" />
+                </p>
+                <p>
+                    <label for="nombreInput">Ingrese su nombre:</label>
+                    <br>
+                    <input type="text" name="nombreInput" class="nombreInput" placeholder="pepe" />
+                </p>
+                <p>
+                    <label for="apellidoInput">Ingrese su apellido:</label>
+                    <br>
+                    <input type="text" name="apellidoInput" class="apellidoInput" placeholder="patan" />
+                </p>
+                <p>
+                    <label for="anexo">Si desea enviar una descripción puede agregarla aqui:</label>
+                    <br>
+                    <textarea name="anexo" cols="30" rows="10" class="anexo"></textarea>
+                </p>
+                <p>
+                    <input type="submit" class="submit" value="¡Enviar!">
+                </p>
+            </form>
+        </main>
+        <footer>
+            <span class="enfasis">Cartas y Mesas</span> - Todos los derechos reservados... para quien desee comprarlos
+            <span class="enfasis">;)</span> - <span class="fecha"></span>
+        </footer>
+    </div>
+    <script src="js/fecha.js"></script>
+    <script src="js/formulario.js"></script>
+</body>
+
+</html>
