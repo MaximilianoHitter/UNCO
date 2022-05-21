@@ -60,3 +60,57 @@ CREATE TABLE asiento(
     ON DELETE CASCADE,
     PRIMARY KEY(idsala, nroasiento)
 )ENGINE=InnoDB;
+/*Asiento tabla creada*/ 
+CREATE TABLE funcion(
+    idfuncion INT(10) NOT NULL,
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    idsala INT(10) NOT NULL,
+    idpublicidadinicio (11) NOT NULL,
+    idpublicidadfinal (11) NOT NULL,
+    CONSTRAINT FK_salafuncion FOREIGN KEY (idsala) REFERENCES sala(idsala)
+    ON UPDATE CASCADE 
+    ON DELETE CASCADE,
+    CONSTRAINT FK_publicidadfuncioninicio FOREIGN KEY (idpublicidadinicio) REFERENCES publicidad(idpublicidad)
+    ON UPDATE CASCADE 
+    ON DELETE CASCADE,
+    CONSTRAINT FK_publicidadfuncionfinal FOREIGN KEY (idpublicidadfinal) REFERENCES publicidad(idpublicidad)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+    PRIMARY KEY (idfuncion)
+)ENGINE=InnoDB;
+/*Funcion tabla con error en la FK de publicidad*/
+CREATE TABLE prefiere(
+    tipodoc VARCHAR(20) NOT NULL,
+    nrodocumento INT(11) NOT NULL,
+    idpublicidad INT(11) NOT NULL,
+    motivo VARCHAR(200),
+    CONSTRAINT FK_clienteprefiere FOREIGN KEY (tipodoc, nrodocumento) REFERENCES cliente(tipodoc, nrodocumento)
+    ON UPDATE CASCADE 
+    ON DELETE CASCADE,
+    CONSTRAINT FK_publicidadprefiere FOREIGN KEY (idpublicidad) REFERENCES publicidad(idpublicidad) 
+    ON UPDATE CASCADE 
+    ON DELETE CASCADE,
+    PRIMARY KEY (tipodoc, nrodocumento, idpublicidad)
+)ENGINE=InnoDB;
+/*Prefiere tabla con error de agregar las foreign key*/   
+CREATE TABLE entrada(
+    numeroentrada INT(10) NOT NULL AUTO_INCREMENT,
+    tipodoc VARCHAR(20) NOT NULL,
+    nrodocumento INT(11) NOT NULL,
+    nroasiento INT(10) NOT NULL,
+    idsala INT(10) NOT NULL,
+    idfuncion INT(10) NOT NULL,
+    fechaemision DATE NOT NULL,
+    CONSTRAINT FK_clienteentrada FOREIGN KEY (tipodoc, nrodocumento) REFERENCES cliente(tipodoc, nrodocumento)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+    CONSTRAINT FK_asientoentrada FOREIGN KEY (idsala, nroasiento) REFERENCES asiento(idsala, nroasiento)
+    ON UPDATE CASCADE,
+    ON DELETE CASCADE,
+    CONSTRAINT FK_funcionentrada FOREIGN KEY (idfuncion) REFERENCES funcion (idfuncion)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+    PRIMARY KEY (tipodoc, nrodocumento, nroasiento, idsala, idfuncion)
+)ENGINE=InnoDB;
+/*No la probe*/     

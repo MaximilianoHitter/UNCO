@@ -161,3 +161,5 @@ nombre.addEventListener('change', (e) => {
     let nombreValor = e.target.value;
 
 })
+
+//help text
