@@ -1,5 +1,5 @@
 body {
-    background-image: url('/idea2/img/tapiz.jpg');
+    background-image: url('./idea2/img/tapiz.jpg');
     color: white;
     font-family: 'Quicksand', sans-serif;
 }
@@ -74,9 +74,9 @@ main {
 }
 
 hr {
-   width: 1000px;
-   background-color: grey;
-   height: 3px; 
+    width: 1000px;
+    background-color: grey;
+    height: 3px;
 }
 
 .productos {
@@ -102,6 +102,10 @@ hr {
     padding: 10px 30px;
 }
 
+input {
+    text-align: center;
+}
+
 .enfasis {
     font-weight: bolder;
     color: red;
@@ -119,21 +123,33 @@ footer {
 }
 
 .errorFI {
-    height: 5px;
+    height: 2px;
 }
 
 .error {
-    border: 2px solid red;
-    color: red;
+    border: 5px solid red;
+    border-radius: 5px;
+    /*color: red;
     padding: 5px;
     background-color: blue;
-    border-radius: 50%;
+    border-radius: 50%;*/
+}
+
+.error:focus {
+    border: 5px solid red;
+    border-radius: 5px;
 }
 
 .correcto {
-    border: 2px solid green;
-    color: green;
+    border: 5px solid green;
+    border-radius: 5px;
+    /*color: green;
     padding: 5px;
     background-color: aquamarine;
-    border-radius: 50%;
+    border-radius: 50%;*/
+}
+
+.correcto:focus {
+    border: 5px solid green;
+    border-radius: 5px;
 }
