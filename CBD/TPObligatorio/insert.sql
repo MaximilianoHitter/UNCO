@@ -24,4 +24,8 @@ INSERT INTO asiento VALUES('2', '2', '1');
 INSERT INTO asiento VALUES('2', '3', '1');
 INSERT INTO funcion VALUES( 1, '2022-06-23', '21:00', '2', 2, 1);
 INSERT INTO entrada VALUES(default, 'DNI', '15975346', '2', '2', 1, '2022-06-22');
-SELECT 
+SELECT idsala, nroasiento, fila FROM asiento AS a WHERE NOT EXISTS(
+    SELECT e.nroasiento, e.idsala FROM entrada AS e INNER JOIN sala AS s ON e.nroasiento = a.nroasiento AND e.idsala = a.idsala WHERE s.tipo = '3D'
+);
+/*Ok*/
+
