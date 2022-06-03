@@ -286,3 +286,31 @@ input::placeholder {
     grid-row: 3;
     grid-column: 3;
 }
+
+/*Pagina de catalogo*/
+.filtros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.catalogo {
+    color: black;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+.catalogo-input {
+    background-color: rgb(204, 39, 39);
+    color: white;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.catalogoItems {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./idea2/img/Everaldo-Crystal-Clear-App-Card-game.ico"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos.css" />
+    <title>Cartas y Mesas</title>
+  </head>
+
+  <body>
+    <div class="contenido">
+      <header class="header">
+        <h1>CARTAS Y MESAS</h1>
+        <div class="contenido-nav">
+          <img src="./idea2/img/mazo/mazocambiado/01trebol.png" alt="" />
+
+          <ul class="nav-bar">
+            <li>
+              <button onclick="window.location.href='inicio.html'">
+                Inicio
+              </button>
+            </li>
+            <li>
+              <button onclick="window.location.href='catalogo.html'">
+                Catálogo
+              </button>
+            </li>
+            <li>
+              <button onclick="window.location.href='contacto.html'">
+                Contacto
+              </button>
+            </li>
+            <li>
+              <button onclick="window.location.href='juegos.html'">
+                Juegos
+              </button>
+            </li>
+          </ul>
+
+          <img src="./idea2/img/mazo/mazocambiado/01pica.png" alt="" />
+        </div>
+      </header>
+      <main>
+        <h1>¡Productos!</h1>
+        <div class="filtros">
+          <p>
+            <label for="tipo" class="catalogo">Tipo de producto:</label>
+            <br>
+            <select name="tipo" class="juegos">
+              <option value="">Seleccione</option>
+              <option value="barajas">Barajas</option>
+              <option value="rompecabezas">Rompecabezas</option>
+            </select>
+          </p>
+          <p>
+            <label for="marca" class="catalogo">Marca:</label>
+            <br>
+            <select name="marca" id="" class="juegos">
+              <option value="">Seleccione</option>
+              <option value="ravens">Ravensburger</option>
+              <option value="otra1">Otra1</option>
+              <option value="otra2">Otra2</option>
+            </select>
+          </p>
+          <p>
+            <label for="precio" class="catalogo">Precio:</label>
+            <br>
+            <input type="number" name="precio" class="catalogo-input" placeholder="Inserte un valor sin puntos"/>
+            <br>
+            <label for="menor" class="catalogo">Es menor:</label>
+            <br>
+            <input type="checkbox" name="menor" id="">
+          </p>
+        </div>
+        
+        <div class="catalogoItems">
+            <div class="producto">
+                <div class="img">
+                    <img src="" alt="">
+                </div>
+                <p class="infoProd">
+                    <span class="tituloPro"></span>
+                    <span class="marcaProd"></span>
+                    <span class="tipoProd"></span>
+                    <span class="piezasProd"></span>
+                    <span class="desProd"></span>
+                    <span class="precioProd"></span>
+                </p>
+            </div>
+            
+            
+        </div>
+      </main>
+      <footer>
+        <span class="enfasis">Cartas y Mesas</span> - Todos los derechos
+        reservados... para quien desee comprarlos
+        <span class="enfasis">;)</span> - <span class="fecha"></span>
+      </footer>
+    </div>
+    <script src="js/catalogo.js"></script>
+    <script src="js/fecha.js"></script>
+  </body>
+</html>
