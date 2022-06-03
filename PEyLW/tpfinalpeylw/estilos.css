@@ -1,0 +1,288 @@
+body {
+    background-image: url('./idea2/img/tapiz.jpg');
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.contenido {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: bisque;
+    color: black;
+    text-align: center;
+    border: 10px solid red;
+    border-radius: 20px;
+}
+
+.nav-bar {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px auto;
+    align-items: center;
+}
+
+.nav-bar li button{
+    background-color: rgb(204, 39, 39);
+    border: 5px solid black;
+    border-radius: 50%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100px;
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 10px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.selected {
+    border: 5px dotted white;
+}
+
+h1 {
+    text-shadow: 5px 5px 5px red;
+}
+
+.contenido-nav {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    margin: 20px 20px;
+}
+
+.contenido-nav img {
+    height: 120px;
+    margin: 0px auto;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+main {
+    background-color: bisque;
+    color: black;
+    text-align: center;
+    border: 10px solid red;
+    border-radius: 20px;
+    margin: 20px 0px;
+    padding-bottom: 20px;
+}
+
+hr {
+    width: 1000px;
+    background-color: grey;
+    height: 3px;
+}
+
+.productos {
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.producto {
+    margin: 0px 10px;
+}
+
+.producto img {
+    width: 150px;
+    height: 150px;
+    border: 3px solid grey;
+    border-radius: 10px;
+}
+
+.texto {
+    text-align: center;
+    padding: 10px 30px;
+}
+
+input {
+    text-align: center;
+}
+
+.enfasis {
+    font-weight: bolder;
+    color: red;
+}
+
+footer {
+    text-align: center;
+    background-color: bisque;
+    color: black;
+    text-align: center;
+    border: 10px solid red;
+    border-radius: 20px;
+    margin: 20px 0px;
+    padding: 10px;
+}
+
+
+/*Formulario de contacto*/
+
+.error {
+    border: 5px solid blue;
+    border-radius: 5px;
+}
+
+.error:focus {
+    border: 5px solid blue;
+    border-radius: 5px;
+}
+
+.correcto {
+    border: 5px solid rgb(2, 187, 2);
+    border-radius: 5px;
+}
+
+.correcto:focus {
+    border: 5px solid rgb(2, 187, 2);
+    border-radius: 5px;
+}
+
+input, textarea {
+    font-size: 1rem;
+    padding: 5px;
+    color: white;
+    font-weight: 600;
+    background-color: rgb(204, 39, 39);
+}
+
+input::placeholder {
+    color: white;
+}
+
+.submit {
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.invisible {
+    display: none;
+}
+
+.textHelper {
+    width: 200px;
+    text-align: center;
+}
+
+.visible {
+    display: inline-block;
+}
+
+/*Pagina minijuegos*/
+.juegos {
+    background-color: rgb(204, 39, 39);
+    color: white;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*Baraja*/
+.botonBaraja {
+    background-color: rgb(204, 39, 39);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.imagenCarta {
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+/*Dados*/
+.botonDados {
+    background-color: rgb(204, 39, 39);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dado {
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 5px solid black;
+    border-radius: 10px;
+    /*height: 200px;
+    width: 200px;*/
+    gap: 20px;
+    padding: 20px 20px;
+}
+
+.valor {
+    background-color: black;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.divDados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.v1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.v2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.v3 {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.v4 {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.v5 {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.v6 {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.v7 {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.v8 {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.v9 {
+    grid-row: 3;
+    grid-column: 3;
+}

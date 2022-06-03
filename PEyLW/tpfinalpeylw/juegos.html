@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./idea2/img/Everaldo-Crystal-Clear-App-Card-game.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="estilos.css" />
+
+    <title>Cartas y Mesas</title>
+</head>
+
+<body>
+    <div class="contenido">
+        <header class="header">
+            <h1>CARTAS Y MESAS</h1>
+            <div class="contenido-nav">
+                <img src="./idea2/img/mazo/mazocambiado/01trebol.png" alt="" />
+
+                <ul class="nav-bar">
+                    <li>
+                        <button onclick="window.location.href='inicio.html'" >
+                            Inicio
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="window.location.href='catalogo.html'">
+                            Catálogo
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="window.location.href='contacto.html'">
+                            Contacto
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="window.location.href='juegos.html'">
+                            Juegos
+                        </button>
+                    </li>
+                </ul>
+
+                <img src="./idea2/img/mazo/mazocambiado/01pica.png" alt="" />
+            </div>
+        </header>
+        <main>
+            <h1>
+                ¡Seleccione un tipo de minijuego<span class="tituloJuego"></span>!
+            </h1>
+            <div class="contenidoJuego">
+                <select id="juegos" class="juegos">
+                    <option value="seleccione">Seleccione un juego</option>
+                    <option value="baraja">Baraja</option>
+                    <option value="dados">Dados</option>
+                    <option value="especial">Especial</option>
+                </select>
+            </div>
+            <div class="juego">
+                
+            </div>
+
+        </main>
+        <footer>
+            <span class="enfasis">Cartas y Mesas</span> - Todos los derechos reservados... para quien desee comprarlos
+            <span class="enfasis">;)</span> - <span class="fecha"></span>
+        </footer>
+    </div>
+    <script src="js/fecha.js"></script>
+    <script src="js/juegos.js"></script>
+</body>
+
+</html>
