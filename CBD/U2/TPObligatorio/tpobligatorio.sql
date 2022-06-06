@@ -66,8 +66,8 @@ CREATE TABLE funcion(
     fecha DATE NOT NULL,
     hora TIME NOT NULL,
     idsala INT(10) NOT NULL,
-    idpublicidadinicio (11) NOT NULL,
-    idpublicidadfinal (11) NOT NULL,
+    idpublicidadinicio INT(11) NOT NULL,
+    idpublicidadfinal INT(11) NOT NULL,
     CONSTRAINT FK_salafuncion FOREIGN KEY (idsala) REFERENCES sala(idsala)
     ON UPDATE CASCADE 
     ON DELETE CASCADE,
@@ -79,7 +79,7 @@ CREATE TABLE funcion(
     ON DELETE CASCADE,
     PRIMARY KEY (idfuncion)
 )ENGINE=InnoDB;
-/*Funcion tabla con error en la FK de publicidad*/
+/*Funcion tabla creada*/
 CREATE TABLE prefiere(
     tipodoc VARCHAR(20) NOT NULL,
     nrodocumento INT(11) NOT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE prefiere(
     ON DELETE CASCADE,
     PRIMARY KEY (tipodoc, nrodocumento, idpublicidad)
 )ENGINE=InnoDB;
-/*Prefiere tabla con error de agregar las foreign key*/   
+/*Prefiere tabla creada*/   
 CREATE TABLE entrada(
     numeroentrada INT(10) NOT NULL AUTO_INCREMENT,
     tipodoc VARCHAR(20) NOT NULL,
@@ -113,4 +113,4 @@ CREATE TABLE entrada(
     ON DELETE CASCADE,
     PRIMARY KEY (tipodoc, nrodocumento, nroasiento, idsala, idfuncion)
 )ENGINE=InnoDB;
-/*No la probe*/     
+/*dio error*/     
