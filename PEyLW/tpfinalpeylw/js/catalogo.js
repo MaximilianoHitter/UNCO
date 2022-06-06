@@ -1,3 +1,7 @@
+//crear carrito en storage
+let arrayCarrito = [];
+localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
+
 //carga de datos en localStorage
 //producto 1
 let objDatos = {
@@ -129,21 +133,107 @@ while (condition) {
 }
 //console.table(arrayProductos);
 
+//mezclar array
+arrayProductos.sort(()=> Math.random() - 0.5);
 
+//seleccinar al padre
+const catalogoItems = document.getElementsByClassName('catalogoItems')[0];
+//console.log(catalogoItems);
 
+//Crear y añadir las tarjetas
+let i = 0;
+arrayProductos.forEach(element => {
+    //div de tarjeta
+    let producto = document.createElement('div');
+    producto.classList.add('productoCat');
+    //div de la imagen
+    let imagenDiv = document.createElement('div');
+    imagenDiv.classList.add('img');
+    //imagen del div
+    let imagen = document.createElement('img');
+    imagen.srcset = element.img;
+    //añadir la imagen al div
+    imagenDiv.appendChild(imagen);
+    //creacion del parrafo
+    let parrafoInfo = document.createElement('p');
+    parrafoInfo.classList.add('infoProd');
+    //span de titulo
+    let spanTitulo = document.createElement('p');
+    spanTitulo.classList.add('tituloProd');
+    spanTitulo.innerHTML = element.tituloProd;
+    parrafoInfo.appendChild(spanTitulo);
+    //parrafo para marca y tipo
+    let parrafoMarca = document.createElement('p');
+    parrafoMarca.classList.add('pMarca');
+    //span de marca
+    let spanMarca = document.createElement('span');
+    spanMarca.classList.add('marcaProd');
+    let primerLetra = element.marcaProd.charAt(0).toUpperCase();
+    let cadenaCompleta = primerLetra + element.marcaProd.substring(1, element.marcaProd.length);
+    spanMarca.innerHTML = cadenaCompleta;
+    parrafoMarca.appendChild(spanMarca);
+    //span de tipo
+    let spanTipo = document.createElement('span');
+    spanTipo.classList.add('tipoProd');
+    let primerLetraTipo = element.tipoProd.charAt(0).toUpperCase();
+    let cadenaCompletaTipo = ` - ` + primerLetraTipo + element.tipoProd.substring(1, element.tipoProd.length);
+    spanTipo.innerHTML = cadenaCompletaTipo;
+    parrafoMarca.appendChild(spanTipo);
+    parrafoInfo.appendChild(parrafoMarca);
+    //span de piezas
+    let spanPiezas = document.createElement('p');
+    spanPiezas.classList.add('piezasProd');
+    spanPiezas.innerHTML = `Piezas: ` + element.piezasProd;
+    parrafoInfo.appendChild(spanPiezas);
+    //span de descripcion
+    let spanDes = document.createElement('p');
+    spanDes.classList.add('desProd');
+    spanDes.innerHTML = `Descripción: \n` + element.desProd;
+    parrafoInfo.appendChild(spanDes);
+    //span de precio
+    let spanPrecio = document.createElement('p');
+    spanPrecio.classList.add('precioProd');
+    spanPrecio.innerHTML = `Precio: $` + element.precioProd;
+    parrafoInfo.appendChild(spanPrecio);
+    //añado el parrafo
+    producto.appendChild(imagenDiv);
+    producto.appendChild(parrafoInfo);
+    //añadir botoncito
+    let boton = document.createElement('button');
+    boton.classList.add('comprar');
+    boton.classList.add(`${i}`);
+    let datos = JSON.stringify(element);
+    boton.addEventListener('click', (e) => {
+        console.log(e.path[0].classList[1]);
+        let datos = arrayProductos[e.path[0].classList[1]];
+        let arrayCarrito = JSON.parse(localStorage.getItem('carrito'));
+        arrayCarrito.push(datos);
+        localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
+        console.table(arrayCarrito);
+    })
+    boton.innerHTML = '¡Comprar!';
+    producto.appendChild(boton);
+    //añado el producto
+    catalogoItems.appendChild(producto);
+    i++;
+});
 
+//parte del carrito
+const carritoItems = document.getElementsByClassName('carritoItems');
+//borrar el contenido del carrito
+function limpiarHTMLCarrito(){
+    while(carritoItems.firstChild){
+        carritoItems.removeChild(carritoItems.firstChild);
+    }
+}
 
-//trabajar siempre presentando el array asi funcan los filtros
-/*<div class="producto">
-                <div class="img">
-                    <img src="" alt="">
-                </div>
-                <p class="infoProd">
-                    <span class="tituloPro"></span>
-                    <span class="tipoProd"></span>
-                    <span class="piezasProd"></span>
-                    <span class="desProd"></span>
-                    <span class="precioProd"></span>
-                </p>
-                button falta
-            </div>*/
+function cargarCarrito(){
+    limpiarHTMLCarrito();
+    let arrayCarrito = localStorage.getItem('carrito');
+    if(arrayCarrito.length = 0){
+        let vacio = document.createElement('p');
+        vacio.innerHTML = '¡Aún no tiene nada en su carrito!';
+    }else{
+        
+    }
+}

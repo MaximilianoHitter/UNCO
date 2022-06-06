@@ -314,3 +314,66 @@ input::placeholder {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+
+.productoCat {
+    border: 5px solid black;
+    border-radius: 10px;
+    margin: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(96, 96, 236);
+}
+
+.productoCat img {
+    width: 300px;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.infoProd {
+    width: 300px;
+    margin: 0 auto ;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+.infoProd p {
+    grid-column: 2;
+    margin-top: 3px;
+}
+
+.tituloProd {
+    color: white;
+    font-size: 20px;
+    text-decoration: underline;
+    text-shadow: 5px 5px 5px black;
+}
+
+.marcaProd {
+    color: rgb(44, 216, 44);
+}
+
+.tipoProd {
+    color: yellow;
+}
+
+.piezasProd, .desProd {
+    color: white;
+}
+
+.precioProd {
+    color: black;
+    font-size: 26px;
+    font-weight: bolder;
+    text-shadow: 5px 5px 5px rgb(179, 16, 16);
+}
+
+.comprar {
+    cursor: pointer;
+    background-color: rgb(204, 39, 39);
+    color: white;
+    border: 5px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
