@@ -46,17 +46,25 @@ const calcularAnio = (e) => {
 
 //Selectores
 const formulario = document.querySelector('.formulario');
+const errorForm = document.querySelector('.errorForm');
 const fechaDate = document.querySelector('.fechaInput');
-
-//const errorFI = document.querySelector('.errorFI');
-
+const Hfecha = document.querySelector('.Hfecha');
 const edad = document.querySelector('.edadInput');
+const Hedad = document.querySelector('.Hedad');
 const importe = document.querySelector('.importeInput');
+const Himporte = document.querySelector('.Himporte');
 const email = document.querySelector('.emailInput');
+const Hemail = document.querySelector('.Hemail');
 const nombre = document.querySelector('.nombreInput');
+const Hnombre = document.querySelector('.Hnombre');
 const apellido = document.querySelector('.apellidoInput');
+const Hapellido = document.querySelector('.Hapellido');
 const anexo = document.querySelector('.anexo');
 const submit = document.querySelector('.submit');
+
+//RegExp
+const verificacion = new RegExp(/^[a-zA-Z ]+$/);
+
 
 //eventListeners
 //submit.addEventListener('click', cargarFormulario);
@@ -64,7 +72,7 @@ const submit = document.querySelector('.submit');
 fechaDate.addEventListener('change', (e) => {
     let fechaStr = e.target.value;
     let arrayFecha = fechaStr.split('/');
-    console.table(arrayFecha);
+    //console.table(arrayFecha);
     let anio = parseInt(arrayFecha[2]);
     let dia = parseInt(arrayFecha[0]);
     let mes = parseInt(arrayFecha[1]) - 1;
@@ -83,24 +91,23 @@ fechaDate.addEventListener('change', (e) => {
         let cantidadDias = parseInt(arrayMeses[mes]);
         if (cantidadDias >= dia) {
             //gut
-            /*errorFI.classList.remove('error');
-            errorFI.classList.add('correcto');
-            errorFI.textContent = 'O';*/
             fechaDate.classList.remove('error');
             fechaDate.classList.add('correcto');
+            Hfecha.classList.add('invisible');
+            Hfecha.classList.remove('visible');
         } else {
-            /*errorFI.classList.remove('correcto');
-            errorFI.classList.add('error');
-            errorFI.textContent = 'X';*/
+            //bad
             fechaDate.classList.remove('correcto');
             fechaDate.classList.add('error');
+            Hfecha.classList.remove('invisible');
+            Hfecha.classList.add('visible');
         }
     } else {
-        /*errorFI.classList.remove('correcto');
-        errorFI.classList.add('error');
-        errorFI.textContent = 'X';*/
+        //bad
         fechaDate.classList.remove('correcto');
         fechaDate.classList.add('error');
+        Hfecha.classList.remove('invisible');
+        Hfecha.classList.remove('visible');
     }
 
 
@@ -114,10 +121,15 @@ edad.addEventListener('change', (e) => {
         //bad
         edad.classList.remove('correcto');
         edad.classList.add('error');
+        Hedad.classList.remove('invisible');
+        Hedad.classList.add('visible');
+        
     } else {
         //gut
         edad.classList.remove('error');
         edad.classList.add('correcto');
+        Hedad.classList.add('invisible');
+        Hedad.classList.remove('visible');
     }
 })
 
@@ -128,10 +140,15 @@ importe.addEventListener('change', (e) => {
         //bad
         importe.classList.remove('correcto');
         importe.classList.add('error');
+        Himporte.classList.remove('invisible');
+        Himporte.classList.add('visible');
     } else {
+        if(importeValor)
         //gut
         importe.classList.remove('error');
         importe.classList.add('correcto');
+        Himporte.classList.add('invisible');
+        Himporte.classList.remove('visible');
     }
 })
 
@@ -144,22 +161,85 @@ email.addEventListener('change', (e) => {
             //gut
             email.classList.remove('error');
             email.classList.add('correcto');
+            Hemail.classList.add('invisible');
+            Hemail.classList.remove('visible');
         } else {
             //bad 
             email.classList.remove('correcto');
             email.classList.add('error');
+            Hemail.classList.remove('invisible');
+            Hemail.classList.add('visible');
         }
     } else {
         //bad
         email.classList.remove('correcto');
         email.classList.add('error');
+        Hemail.classList.remove('invisible');
+        Hemail.classList.add('visible');
     }
 })
 
 //Comprobacion nombre 
 nombre.addEventListener('change', (e) => {
     let nombreValor = e.target.value;
+    if(!verificacion.test(nombreValor)){
+        //bad
+        nombre.classList.add('error');
+        nombre.classList.remove('correcto');
+        Hnombre.classList.remove('invisible');
+        Hnombre.classList.add('visible');
+    }else{
+        //gut
+        nombre.classList.add('correcto');
+        nombre.classList.remove('error');
+        Hnombre.classList.add('invisible');
+        Hnombre.classList.remove('visible');
+    }
+
 
 })
 
-//help text
+//Comprobacion apellido
+apellido.addEventListener('change', (e) => {
+    let apellidoValor = e.target.value;
+    if(!verificacion.test(apellidoValor)){
+        //bad
+        apellido.classList.add('error');
+        apellido.classList.remove('correcto');
+        Hapellido.classList.remove('invisible');
+        Hapellido.classList.add('visible');
+    }else{
+        //gut
+        apellido.classList.add('correcto');
+        apellido.classList.remove('error');
+        Hapellido.classList.add('invisible');
+        Hapellido.classList.remove('visible');
+    }
+})
+
+//Submit
+
+submit.addEventListener('click', (e) => {
+    e.preventDefault();
+    if(fechaDate.classList.contains('error') || edad.classList.contains('error') || importe.classList.contains('error') || email.classList.contains('error') || nombre.classList.contains('error') || apellido.classList.contains('error')){
+        //bad
+        errorForm.classList.remove('invisible');
+        errorForm.classList.add('visible');
+    }else{
+        //gut
+        errorForm.classList.remove('error');
+        errorForm.classList.add('invisible');
+        let objDatos = {
+            fecha:fechaDate.value,
+            edad:edad.value,
+            importe:importe.value,
+            email:email.value,
+            nombre:nombre.value,
+            apellido:apellido.value,
+            anexo:anexo.value
+        };
+        //console.table(objDatos);
+        localStorage.setItem('usuario', JSON.stringify(objDatos));
+    }
+    
+})

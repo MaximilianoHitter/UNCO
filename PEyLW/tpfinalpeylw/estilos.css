@@ -25,22 +25,20 @@ body {
     align-items: center;
 }
 
-.nav-bar li {
+.nav-bar li button{
     background-color: rgb(204, 39, 39);
     border: 5px solid black;
     border-radius: 50%;
-    padding: 20px 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 100px;
     vertical-align: middle;
     font-size: 20px;
     margin: 0 10px;
+    color: white;
+    cursor: pointer;
 }
 
-.nav-bar li a {
-    color: white;
-    text-decoration: dotted;
-    padding-top: 5px;
-}
 
 .selected {
     border: 5px dotted white;
@@ -122,34 +120,260 @@ footer {
     padding: 10px;
 }
 
-.errorFI {
-    height: 2px;
-}
+
+/*Formulario de contacto*/
 
 .error {
-    border: 5px solid red;
+    border: 5px solid blue;
     border-radius: 5px;
-    /*color: red;
-    padding: 5px;
-    background-color: blue;
-    border-radius: 50%;*/
 }
 
 .error:focus {
-    border: 5px solid red;
+    border: 5px solid blue;
     border-radius: 5px;
 }
 
 .correcto {
-    border: 5px solid green;
+    border: 5px solid rgb(2, 187, 2);
     border-radius: 5px;
-    /*color: green;
-    padding: 5px;
-    background-color: aquamarine;
-    border-radius: 50%;*/
 }
 
 .correcto:focus {
-    border: 5px solid green;
+    border: 5px solid rgb(2, 187, 2);
     border-radius: 5px;
 }
+
+input, textarea {
+    font-size: 1rem;
+    padding: 5px;
+    color: white;
+    font-weight: 600;
+    background-color: rgb(204, 39, 39);
+}
+
+input::placeholder {
+    color: white;
+}
+
+.submit {
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.invisible {
+    display: none;
+}
+
+.textHelper {
+    width: 200px;
+    text-align: center;
+}
+
+.visible {
+    display: inline-block;
+}
+
+/*Pagina minijuegos*/
+.juegos {
+    background-color: rgb(204, 39, 39);
+    color: white;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*Baraja*/
+.botonBaraja {
+    background-color: rgb(204, 39, 39);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.imagenCarta {
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+/*Dados*/
+.botonDados {
+    background-color: rgb(204, 39, 39);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dado {
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 5px solid black;
+    border-radius: 10px;
+    /*height: 200px;
+    width: 200px;*/
+    gap: 20px;
+    padding: 20px 20px;
+}
+
+.valor {
+    background-color: black;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.divDados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.v1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.v2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.v3 {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.v4 {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.v5 {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.v6 {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.v7 {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.v8 {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.v9 {
+    grid-row: 3;
+    grid-column: 3;
+}
+
+/*Pagina de catalogo*/
+.filtros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.catalogo {
+    color: black;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+.catalogo-input {
+    background-color: rgb(204, 39, 39);
+    color: white;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.catalogoItems {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.productoCat {
+    border: 5px solid black;
+    border-radius: 10px;
+    margin: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(96, 96, 236);
+}
+
+.productoCat img {
+    width: 300px;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.infoProd {
+    width: 300px;
+    margin: 0 auto ;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+.infoProd p {
+    grid-column: 2;
+    margin-top: 3px;
+}
+
+.tituloProd {
+    color: white;
+    font-size: 20px;
+    text-decoration: underline;
+    text-shadow: 5px 5px 5px black;
+}
+
+.marcaProd {
+    color: rgb(44, 216, 44);
+}
+
+.tipoProd {
+    color: yellow;
+}
+
+.piezasProd, .desProd {
+    color: white;
+}
+
+.precioProd {
+    color: black;
+    font-size: 26px;
+    font-weight: bolder;
+    text-shadow: 5px 5px 5px rgb(179, 16, 16);
+}
+
+.comprar {
+    cursor: pointer;
+    background-color: rgb(204, 39, 39);
+    color: white;
+    border: 5px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+}
+

@@ -22,59 +22,89 @@
                 <img src="./idea2/img/mazo/mazocambiado/01trebol.png" alt="" />
 
                 <ul class="nav-bar">
-                    <li class="selected">
-                        <a href="inicio.html">Inicio</a>
+                    <li>
+                        <button onclick="window.location.href='inicio.html'" >
+                            Inicio
+                        </button>
                     </li>
                     <li>
-                        <a href="catalogo.html">Catálogo</a>
+                        <button onclick="window.location.href='catalogo.html'">
+                            Catálogo
+                        </button>
                     </li>
                     <li>
-                        <a href="contacto.html">Contacto</a>
+                        <button onclick="window.location.href='contacto.html'">
+                            Contacto
+                        </button>
                     </li>
                     <li>
-                        <a href="juegos.html">MiniJuegos</a>
+                        <button onclick="window.location.href='juegos.html'">
+                            Juegos
+                        </button>
                     </li>
                 </ul>
 
-                <img src="./idea2/img/mazo/mazocambiado/1pica.png" alt="" />
+                <img src="./idea2/img/mazo/mazocambiado/01pica.png" alt="" />
             </div>
         </header>
         <main>
             <h1>¡Complete este formulario para contactarse con nosotros!</h1>
 
-            <form action="#" method="post" class="formulario">
-                <p>
+            <form action="#" method="POST" class="formulario">
+                <p class="contenidoInput errorForm invisible">
+                    ¡Todos los campos deben ser válidos para enviar la información!
+                </p>
+                <p class="contenidoInput">
                     <label for="fechaInput">Ingrese su fecha de nacimiento:</label>
                     <br>
                     <input type="text" name="fechaInput" class="fechaInput" placeholder="dd/mm/aaaa" />
-
+                    <p class="textHelper Hfecha invisible">
+                        La fecha debe contener en los dos primeros dígitos el día, luego el mes y luego el año. Recuerde que no se puede seleccionar el día 29 de febrero de años no bisiestos.
+                    </p>
                 </p>
-                <p>
+                <p class="contenidoInput">
                     <label for="edadInput">Ingrese su edad:</label>
                     <br>
                     <input type="number" name="edadInput" class="edadInput" placeholder="27" />
+                    <p class="textHelper Hedad invisible">
+                        Su edad debe ser un número entero.
+                    </p>
                 </p>
-                <p>
+                <p class="contenidoInput">
                     <label for="importeInput">Ingrese su salario:</label>
                     <br>
-                    <input type="number" name="importeInput" class="importeInput" placeholder="10000.50" />
+                    <input type="number" step="any" name="importeInput" class="importeInput" placeholder="10000.50" />
+                    <p class="textHelper Himporte invisible">
+                        Recuerde ingresar su sueldo como múltiplo de 100 y mayor a 0.
+                    </p>
                 </p>
-                <p>
+                <p class="contenidoInput">
                     <label for="emailInput">Ingrese su email:</label>
                     <br>
                     <input type="email" name="emailInput" class="emailInput" placeholder="pepito@pepe.com" />
+                    <p class="textHelper Hemail invisible">
+                        Su email debe contener el siguiente formato: 
+                        <br>
+                        'xxxx@dominio.com'
+                    </p>
                 </p>
-                <p>
+                <p class="contenidoInput">
                     <label for="nombreInput">Ingrese su nombre:</label>
                     <br>
                     <input type="text" name="nombreInput" class="nombreInput" placeholder="pepe" />
+                    <p class="textHelper Hnombre invisible">
+                        Su nombre no puede contener números o caracteres extraños.
+                    </p>
                 </p>
-                <p>
+                <p class="contenidoInput">
                     <label for="apellidoInput">Ingrese su apellido:</label>
                     <br>
                     <input type="text" name="apellidoInput" class="apellidoInput" placeholder="patan" />
+                    <p class="textHelper Hapellido invisible">
+                        Su apellido no puede contener números o caracteres extraños.
+                    </p>
                 </p>
-                <p>
+                <p class="contenidoInput">
                     <label for="anexo">Si desea enviar una descripción puede agregarla aqui:</label>
                     <br>
                     <textarea name="anexo" cols="30" rows="10" class="anexo"></textarea>
