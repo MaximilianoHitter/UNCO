@@ -1,6 +1,8 @@
 //crear carrito en storage
 let arrayCarrito = [];
+const carritoItems = document.getElementsByClassName('carritoItems')[0];
 localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
+const tableBody = document.createElement('tableBody');
 
 //carga de datos en localStorage
 //producto 1
@@ -204,12 +206,13 @@ arrayProductos.forEach(element => {
     boton.classList.add(`${i}`);
     //let datos = JSON.stringify(element);
     boton.addEventListener('click', (e) => {
-        console.log(e.path[0].classList[1]);
+        //console.log(e.path[0].classList[1]);
         let datos = arrayProductos[e.path[0].classList[1]];
         let arrayCarrito = JSON.parse(localStorage.getItem('carrito'));
         arrayCarrito.push(datos);
         localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
-        console.table(arrayCarrito);
+        //console.table(arrayCarrito);
+        cargarCarrito();
     })
     boton.innerHTML = '¡Comprar!';
     producto.appendChild(boton);
@@ -218,8 +221,11 @@ arrayProductos.forEach(element => {
     i++;
 });
 
+cargarCarrito();
+
 //parte del carrito
-const carritoItems = document.getElementsByClassName('carritoItems');
+
+console.log(carritoItems);
 //borrar el contenido del carrito
 function limpiarHTMLCarrito(){
     while(carritoItems.firstChild){
@@ -228,12 +234,97 @@ function limpiarHTMLCarrito(){
 }
 
 function cargarCarrito(){
+    console.log('se cargo el carrito');
     limpiarHTMLCarrito();
     let arrayCarrito = localStorage.getItem('carrito');
-    if(arrayCarrito.length = 0){
+    arrayCarrito = JSON.parse(arrayCarrito);
+    if(arrayCarrito.length == 0){
         let vacio = document.createElement('p');
         vacio.innerHTML = '¡Aún no tiene nada en su carrito!';
+        carritoItems.appendChild(vacio);
     }else{
-        
+        //crear la tabla
+        let table = document.createElement('table');
+        table.classList.add('tabla');
+        //crear el head de la tabla
+        let thead = document.createElement('thead');
+        //creacion de los th
+        let productoTabla = document.createElement('th');
+        productoTabla.innerHTML = 'Producto';
+        thead.appendChild(productoTabla);
+        let tipoTabla = document.createElement('th');
+        tipoTabla.innerHTML = 'Tipo';
+        thead.appendChild(tipoTabla);
+        let precioTabla = document.createElement('th');
+        precioTabla.innerHTML = 'Precio';
+        thead.appendChild(precioTabla);
+        let accionTabla = document.createElement('th');
+        accionTabla.innerHTML = 'Acción';
+        thead.appendChild(accionTabla);
+        //agrego eñ thead
+        table.appendChild(thead);
+
+        let contadorCarrito = 0;
+        console.log(arrayCarrito);
+        //JSON.parse(arrayCarrito);
+        arrayCarrito.forEach(element => {
+            //obtencion de los valores
+            let productoNombre = element.tituloProd;
+            let tipoProducto = element.tipoProd;
+            let precioProducto = element.precioProd;
+            //la row
+            let tr = document.createElement('tr');
+            //primer columna
+            let td1 = document.createElement('td');
+            td1.innerHTML = productoNombre;
+            td1.classList.add('tabla-producto-nombre');
+            //segunda columna
+            let td2 = document.createElement('td');
+            td2.innerHTML = tipoProducto;
+            td2.classList.add('tabla-tipo-producto');
+            //tercera columna
+            let td3 = document.createElement('td');
+            td3.innerHTML = precioProducto;
+            td3.classList.add('tabla-precio-producto');
+            //accion de borrar
+            let td4 = document.createElement('td');
+            let botonBorrar = document.createElement('button');
+            botonBorrar.classList.add('botonBorrar');
+            botonBorrar.innerHTML = 'Borrar';
+            botonBorrar.classList.add(`${contadorCarrito}`);
+            botonBorrar.addEventListener('click', (e) => {
+                // pasar a la funcion e.path[0].classList[1];
+                borrarDeCarrito(e.path[0].classList[1]);
+            
+            })
+            td4.appendChild(botonBorrar);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            tableBody.appendChild(tr);
+
+
+            contadorCarrito++;
+        });
+
+        table.appendChild(tableBody);
+        carritoItems.appendChild(table);
     }
 }
+
+function borrarDeCarrito(e){
+    let arrayCarrito = JSON.parse(localStorage.getItem('carrito'));
+    let newArray = [];
+    for (const key in arrayCarrito) {
+        if(key != e){
+            newArray.push(arrayCarrito[key]);
+        }        
+    }
+    arrayCarrito = newArray;
+    localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
+    cargarCarrito();
+}
+
+
+
