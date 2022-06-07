@@ -202,7 +202,7 @@ arrayProductos.forEach(element => {
     let boton = document.createElement('button');
     boton.classList.add('comprar');
     boton.classList.add(`${i}`);
-    let datos = JSON.stringify(element);
+    //let datos = JSON.stringify(element);
     boton.addEventListener('click', (e) => {
         console.log(e.path[0].classList[1]);
         let datos = arrayProductos[e.path[0].classList[1]];
