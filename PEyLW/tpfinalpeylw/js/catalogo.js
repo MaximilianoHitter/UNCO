@@ -7,115 +7,115 @@ const tableBody = document.createElement('tableBody');
 //carga de datos en localStorage
 //producto 1
 let objDatos = {
-    img:'./idea2/img/productos/rompecabezas1.jpg',
-    tituloProd:'Taj Mehol',
-    marcaProd:'ravensburger',
-    tipoProd:'rompecabezas',
-    piezasProd:5000,
-    desProd:'Un bello retrato del Taj Mahal',
-    precioProd:3000
+    img: './idea2/img/productos/rompecabezas1.jpg',
+    tituloProd: 'Taj Mehol',
+    marcaProd: 'ravensburger',
+    tipoProd: 'rompecabezas',
+    piezasProd: 5000,
+    desProd: 'Un bello retrato del Taj Mahal',
+    precioProd: 3000
 };
 localStorage.setItem('prod1', JSON.stringify(objDatos));
 //producto 2
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas2.jpg',
-    tituloProd:'Fondo Marino',
-    marcaProd:'ravensburger',
-    tipoProd:'rompecabezas',
-    piezasProd:3000,
-    desProd:'Unos cuantos peces dando vueltas',
-    precioProd:1500
+    img: './idea2/img/productos/rompecabezas2.jpg',
+    tituloProd: 'Fondo Marino',
+    marcaProd: 'ravensburger',
+    tipoProd: 'rompecabezas',
+    piezasProd: 3000,
+    desProd: 'Unos cuantos peces dando vueltas',
+    precioProd: 1500
 };
 localStorage.setItem('prod2', JSON.stringify(objDatos));
 //producto 3
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas3.jpg',
-    tituloProd:'Selvachu Pichu',
-    marcaProd:'ravensburger',
-    tipoProd:'rompecabezas',
-    piezasProd:2500,
-    desProd:'Las frondosas selvas del mundo',
-    precioProd:500
+    img: './idea2/img/productos/rompecabezas3.jpg',
+    tituloProd: 'Selvachu Pichu',
+    marcaProd: 'ravensburger',
+    tipoProd: 'rompecabezas',
+    piezasProd: 2500,
+    desProd: 'Las frondosas selvas del mundo',
+    precioProd: 500
 };
 localStorage.setItem('prod3', JSON.stringify(objDatos));
 //producto 4
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas4.jpg',
-    tituloProd:'Puente Iluminado',
-    marcaProd:'ravensburger',
-    tipoProd:'rompecabezas',
-    piezasProd:3000,
-    desProd:'Un bonito puente iluminado',
-    precioProd:1500
+    img: './idea2/img/productos/rompecabezas4.jpg',
+    tituloProd: 'Puente Iluminado',
+    marcaProd: 'ravensburger',
+    tipoProd: 'rompecabezas',
+    piezasProd: 3000,
+    desProd: 'Un bonito puente iluminado',
+    precioProd: 1500
 };
 localStorage.setItem('prod4', JSON.stringify(objDatos));
 //producto 5
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas5.jpg',
-    tituloProd:'Una noche barqueada',
-    marcaProd:'ravensburger',
-    tipoProd:'rompecabezas',
-    piezasProd:5500,
-    desProd:'Como la noche estrellada pero con barcos',
-    precioProd:1500
+    img: './idea2/img/productos/rompecabezas5.jpg',
+    tituloProd: 'Una noche barqueada',
+    marcaProd: 'ravensburger',
+    tipoProd: 'rompecabezas',
+    piezasProd: 5500,
+    desProd: 'Como la noche estrellada pero con barcos',
+    precioProd: 1500
 };
 localStorage.setItem('prod5', JSON.stringify(objDatos));
 //producto 6
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas6.jpg',
-    tituloProd:'Las cuatro estaciones',
-    marcaProd:'anatolian',
-    tipoProd:'rompecabezas',
-    piezasProd:1000,
-    desProd:'Como si se representara la obra de Vivaldi en un cuadro',
-    precioProd:1500
+    img: './idea2/img/productos/rompecabezas6.jpg',
+    tituloProd: 'Las cuatro estaciones',
+    marcaProd: 'anatolian',
+    tipoProd: 'rompecabezas',
+    piezasProd: 1000,
+    desProd: 'Como si se representara la obra de Vivaldi en un cuadro',
+    precioProd: 1500
 };
 localStorage.setItem('prod6', JSON.stringify(objDatos));
 //producto 7
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas7.jpg',
-    tituloProd:'Coliseo Colisionado',
-    marcaProd:'anatolian',
-    tipoProd:'rompecabezas',
-    piezasProd:10000,
-    desProd:'Coliseo con refacciones',
-    precioProd:1500
+    img: './idea2/img/productos/rompecabezas7.jpg',
+    tituloProd: 'Coliseo Colisionado',
+    marcaProd: 'anatolian',
+    tipoProd: 'rompecabezas',
+    piezasProd: 10000,
+    desProd: 'Coliseo con refacciones',
+    precioProd: 1500
 };
 localStorage.setItem('prod7', JSON.stringify(objDatos));
 //producto 8
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas8.jpg',
-    tituloProd:'Paseo Antiguo',
-    marcaProd:'anatolian',
-    tipoProd:'rompecabezas',
-    piezasProd:800,
-    desProd:'Un agradable y colorido paseo',
-    precioProd:1500
+    img: './idea2/img/productos/rompecabezas8.jpg',
+    tituloProd: 'Paseo Antiguo',
+    marcaProd: 'anatolian',
+    tipoProd: 'rompecabezas',
+    piezasProd: 800,
+    desProd: 'Un agradable y colorido paseo',
+    precioProd: 1500
 };
 localStorage.setItem('prod8', JSON.stringify(objDatos));
 //producto 9
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas9.jpg',
-    tituloProd:'Barquillo',
-    marcaProd:'anatolian',
-    tipoProd:'rompecabezas',
-    piezasProd:500,
-    desProd:'Un paseo en barco',
-    precioProd:1500
+    img: './idea2/img/productos/rompecabezas9.jpg',
+    tituloProd: 'Barquillo',
+    marcaProd: 'anatolian',
+    tipoProd: 'rompecabezas',
+    piezasProd: 500,
+    desProd: 'Un paseo en barco',
+    precioProd: 1500
 };
 localStorage.setItem('prod9', JSON.stringify(objDatos));
 //producto 10
 objDatos = {
-    img:'./idea2/img/productos/rompecabezas10.jpg',
-    tituloProd:'Hansel y Roberto',
-    marcaProd:'anatolian',
-    tipoProd:'rompecabezas',
-    piezasProd:2500,
-    desProd:'Cuidado Hansel, esta no es Gretel',
-    precioProd:1500
+    img: './idea2/img/productos/rompecabezas10.jpg',
+    tituloProd: 'Hansel y Roberto',
+    marcaProd: 'anatolian',
+    tipoProd: 'rompecabezas',
+    piezasProd: 2500,
+    desProd: 'Cuidado Hansel, esta no es Gretel',
+    precioProd: 1500
 };
 localStorage.setItem('prod10', JSON.stringify(objDatos));
- 
+
 //Obtener los datos
 let arrayProductos = [];
 let condition = true;
@@ -127,16 +127,16 @@ while (condition) {
     contador++;
     str = str + contador;
     item = localStorage.getItem(str);
-    if(item != null){
+    if (item != null) {
         arrayProductos[contador] = JSON.parse(item);
-    }else{
+    } else {
         condition = false;
     }
 }
 //console.table(arrayProductos);
 
 //mezclar array
-arrayProductos.sort(()=> Math.random() - 0.5);
+arrayProductos.sort(() => Math.random() - 0.5);
 
 //seleccinar al padre
 const catalogoItems = document.getElementsByClassName('catalogoItems')[0];
@@ -212,6 +212,8 @@ arrayProductos.forEach(element => {
         arrayCarrito.push(datos);
         localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
         //console.table(arrayCarrito);
+        limpiarHTMLCarrito();
+        limpiarBody();
         cargarCarrito();
     })
     boton.innerHTML = '¡Comprar!';
@@ -223,47 +225,61 @@ arrayProductos.forEach(element => {
 
 cargarCarrito();
 
+//limpiar el body del carrito 
+function limpiarBody() {
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+    }
+}
+
 //parte del carrito
 
 console.log(carritoItems);
 //borrar el contenido del carrito
-function limpiarHTMLCarrito(){
-    while(carritoItems.firstChild){
+function limpiarHTMLCarrito() {
+    while (carritoItems.firstChild) {
         carritoItems.removeChild(carritoItems.firstChild);
     }
 }
 
-function cargarCarrito(){
+function pagar(pago) {
+    alert(`Yo no creo que tenga \$${pago}, mejor le inicio un juicio.`);
+}
+
+function cargarCarrito() {
     console.log('se cargo el carrito');
     limpiarHTMLCarrito();
-    let arrayCarrito = localStorage.getItem('carrito');
-    arrayCarrito = JSON.parse(arrayCarrito);
-    if(arrayCarrito.length == 0){
+    limpiarBody();
+    let arrayCarrito = JSON.parse(localStorage.getItem('carrito'));
+    if (arrayCarrito.length == 0) {
         let vacio = document.createElement('p');
         vacio.innerHTML = '¡Aún no tiene nada en su carrito!';
         carritoItems.appendChild(vacio);
-    }else{
+    } else {
         //crear la tabla
         let table = document.createElement('table');
         table.classList.add('tabla');
         //crear el head de la tabla
         let thead = document.createElement('thead');
+        let trHead = document.createElement('tr');
         //creacion de los th
         let productoTabla = document.createElement('th');
         productoTabla.innerHTML = 'Producto';
-        thead.appendChild(productoTabla);
+        trHead.appendChild(productoTabla);
         let tipoTabla = document.createElement('th');
         tipoTabla.innerHTML = 'Tipo';
-        thead.appendChild(tipoTabla);
+        trHead.appendChild(tipoTabla);
         let precioTabla = document.createElement('th');
         precioTabla.innerHTML = 'Precio';
-        thead.appendChild(precioTabla);
+        trHead.appendChild(precioTabla);
         let accionTabla = document.createElement('th');
         accionTabla.innerHTML = 'Acción';
-        thead.appendChild(accionTabla);
+        trHead.appendChild(accionTabla);
+        thead.appendChild(trHead);
         //agrego eñ thead
         table.appendChild(thead);
 
+        let montoFinal = 0;
         let contadorCarrito = 0;
         console.log(arrayCarrito);
         //JSON.parse(arrayCarrito);
@@ -272,6 +288,7 @@ function cargarCarrito(){
             let productoNombre = element.tituloProd;
             let tipoProducto = element.tipoProd;
             let precioProducto = element.precioProd;
+            montoFinal += precioProducto;
             //la row
             let tr = document.createElement('tr');
             //primer columna
@@ -295,36 +312,46 @@ function cargarCarrito(){
             botonBorrar.addEventListener('click', (e) => {
                 // pasar a la funcion e.path[0].classList[1];
                 borrarDeCarrito(e.path[0].classList[1]);
-            
+
             })
             td4.appendChild(botonBorrar);
             tr.appendChild(td1);
             tr.appendChild(td2);
             tr.appendChild(td3);
             tr.appendChild(td4);
-            tableBody.appendChild(tr);
+            table.appendChild(tr);
 
 
             contadorCarrito++;
         });
 
-        table.appendChild(tableBody);
+        let tdRelleno = document.createElement('td');
+        let ultimaTr = document.createElement('tr');
+        let ultimoTd = document.createElement('td');
+        let ultimoTd2 = document.createElement('td');
+        let botonComprar = document.createElement('button');
+        botonComprar.innerHTML = '¡Pagar!';
+        botonComprar.addEventListener('click', () => (pagar(montoFinal)));
+        ultimoTd2.appendChild(botonComprar);
+        ultimoTd.innerHTML = 'Monto: $' + montoFinal;
+        ultimaTr.appendChild(tdRelleno);
+        ultimaTr.appendChild(ultimoTd);
+        ultimaTr.appendChild(ultimoTd2);
+        table.appendChild(ultimaTr);
+        //table.appendChild(tableBody);
         carritoItems.appendChild(table);
     }
 }
 
-function borrarDeCarrito(e){
+function borrarDeCarrito(e) {
     let arrayCarrito = JSON.parse(localStorage.getItem('carrito'));
     let newArray = [];
     for (const key in arrayCarrito) {
-        if(key != e){
+        if (key != e) {
             newArray.push(arrayCarrito[key]);
-        }        
+        }
     }
     arrayCarrito = newArray;
     localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
     cargarCarrito();
 }
-
-
-

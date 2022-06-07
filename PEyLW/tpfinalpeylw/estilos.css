@@ -25,7 +25,7 @@ body {
     align-items: center;
 }
 
-.nav-bar li button{
+.nav-bar li button {
     background-color: rgb(204, 39, 39);
     border: 5px solid black;
     border-radius: 50%;
@@ -38,7 +38,6 @@ body {
     color: white;
     cursor: pointer;
 }
-
 
 .selected {
     border: 5px dotted white;
@@ -143,7 +142,8 @@ footer {
     border-radius: 5px;
 }
 
-input, textarea {
+input,
+textarea {
     font-size: 1rem;
     padding: 5px;
     color: white;
@@ -173,7 +173,9 @@ input::placeholder {
     display: inline-block;
 }
 
+
 /*Pagina minijuegos*/
+
 .juegos {
     background-color: rgb(204, 39, 39);
     color: white;
@@ -185,7 +187,9 @@ input::placeholder {
     padding-right: 10px;
 }
 
+
 /*Baraja*/
+
 .botonBaraja {
     background-color: rgb(204, 39, 39);
     color: white;
@@ -203,7 +207,9 @@ input::placeholder {
     border-radius: 5px;
 }
 
+
 /*Dados*/
+
 .botonDados {
     background-color: rgb(204, 39, 39);
     color: white;
@@ -287,7 +293,9 @@ input::placeholder {
     grid-column: 3;
 }
 
+
 /*Pagina de catalogo*/
+
 .filtros {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -332,7 +340,7 @@ input::placeholder {
 
 .infoProd {
     width: 300px;
-    margin: 0 auto ;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 10% 80% 10%;
 }
@@ -357,7 +365,8 @@ input::placeholder {
     color: yellow;
 }
 
-.piezasProd, .desProd {
+.piezasProd,
+.desProd {
     color: white;
 }
 
@@ -377,3 +386,22 @@ input::placeholder {
     font-size: 20px;
 }
 
+.carrito {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.carritoItems {
+    border: 10px solid grey;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: lightgray;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
