@@ -25,7 +25,7 @@ body {
     align-items: center;
 }
 
-.nav-bar li button{
+.nav-bar li button {
     background-color: rgb(204, 39, 39);
     border: 5px solid black;
     border-radius: 50%;
@@ -38,7 +38,6 @@ body {
     color: white;
     cursor: pointer;
 }
-
 
 .selected {
     border: 5px dotted white;
@@ -143,7 +142,8 @@ footer {
     border-radius: 5px;
 }
 
-input, textarea {
+input,
+textarea {
     font-size: 1rem;
     padding: 5px;
     color: white;
@@ -173,7 +173,9 @@ input::placeholder {
     display: inline-block;
 }
 
+
 /*Pagina minijuegos*/
+
 .juegos {
     background-color: rgb(204, 39, 39);
     color: white;
@@ -185,7 +187,9 @@ input::placeholder {
     padding-right: 10px;
 }
 
+
 /*Baraja*/
+
 .botonBaraja {
     background-color: rgb(204, 39, 39);
     color: white;
@@ -203,7 +207,9 @@ input::placeholder {
     border-radius: 5px;
 }
 
+
 /*Dados*/
+
 .botonDados {
     background-color: rgb(204, 39, 39);
     color: white;
@@ -287,7 +293,9 @@ input::placeholder {
     grid-column: 3;
 }
 
+
 /*Pagina de catalogo*/
+
 .filtros {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -313,4 +321,87 @@ input::placeholder {
 .catalogoItems {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+.productoCat {
+    border: 5px solid black;
+    border-radius: 10px;
+    margin: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(96, 96, 236);
+}
+
+.productoCat img {
+    width: 300px;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.infoProd {
+    width: 300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+.infoProd p {
+    grid-column: 2;
+    margin-top: 3px;
+}
+
+.tituloProd {
+    color: white;
+    font-size: 20px;
+    text-decoration: underline;
+    text-shadow: 5px 5px 5px black;
+}
+
+.marcaProd {
+    color: rgb(44, 216, 44);
+}
+
+.tipoProd {
+    color: yellow;
+}
+
+.piezasProd,
+.desProd {
+    color: white;
+}
+
+.precioProd {
+    color: black;
+    font-size: 26px;
+    font-weight: bolder;
+    text-shadow: 5px 5px 5px rgb(179, 16, 16);
+}
+
+.comprar {
+    cursor: pointer;
+    background-color: rgb(204, 39, 39);
+    color: white;
+    border: 5px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.carrito {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.carritoItems {
+    border: 10px solid grey;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: lightgray;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
