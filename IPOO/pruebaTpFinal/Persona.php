@@ -76,6 +76,20 @@ class Persona{
         return $respuesta;
     }
 
+    //Para hacer el update tiene que crear una instancia y con cargar() ponerle minimo el dni original y los otros datos que desea modificar
+    public function update(){
+        $respuesta = false;
+        $base = new DataBase();
+        $consulta = "UPDATE persona SET dni='{$this->getDni()}' AND nombre='{$this->getNombre()}' AND apellido='{$this->getApellido()}' WHERE dni={$this->getDni()}";
+        $resultado = $base->query($consulta);
+        if($resultado[0]){
+            $respuesta = true;
+        }else{
+            $this->setMensajeOperacion($base->getError()); 
+        }
+        return $respuesta;
+    }
+
 
     public function __toString(){
         $str = "

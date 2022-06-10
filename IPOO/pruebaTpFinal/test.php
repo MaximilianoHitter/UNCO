@@ -7,10 +7,22 @@ if($objPersona->buscar(38258043)){
 
 $objPersona->__toString();
 
+//Para update
+$objPersona = new Persona();
+$objPersona->cargar(15215614, 'Josecito', 'p');
+$objPersona->update();
+
+$objPersona->__toString();
+
 //Insertar
-$objPersonaNueva = new Persona();
+/*$objPersonaNueva = new Persona();
 $objPersonaNueva->cargar(15215614, 'Pepe', 'l');
 $objPersonaNueva->insert();
+Funciono ok, con un warning pero funco
+*/
+
+
+
 
 /* var_dump($objPersona->buscar(38258043));
 if($objPersona->buscar(38258043)){

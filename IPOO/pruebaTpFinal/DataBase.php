@@ -59,7 +59,6 @@ class DataBase{
             //se puede hacer la consulta
             $consultaArmada = mysqli_query($this->getConexion(), $consulta);
             if($consultaArmada){
-                
                 //se puede realizar la query bien
                 if($consultaArmada->num_rows > 0){
                     //se realizo con exito la consulta
