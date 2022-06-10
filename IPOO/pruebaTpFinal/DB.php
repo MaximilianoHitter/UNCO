@@ -113,7 +113,7 @@ class DB{
         $respuesta = null;
         if($this->getResult()){
             $this->setError('');
-            if($temporal = mysqli_fetch_assoc($this->getResult())){
+            if($temporal = mysqli_fetch_assoc(mysqli_result($this->getResult()))){
                 $respuesta = $temporal;
             }else{
                 mysqli_free_result($this->getResult());

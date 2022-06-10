@@ -1,12 +1,36 @@
 <?php
 require_once('Persona.php');
-/*$objPersona = new Persona();
+$objPersona = new Persona();
+if($objPersona->buscar(38258043)){
+    echo $objPersona;
+}
 
-var_dump($objPersona->buscar(38258043));*/
+$objPersona->__toString();
 
-$conexion = mysqli_connect('127.0.0.1', 'root', '', 'pruebaipoo');
+//Insertar
+$objPersonaNueva = new Persona();
+$objPersonaNueva->cargar(15215614, 'Pepe', 'l');
+$objPersonaNueva->insert();
+
+/* var_dump($objPersona->buscar(38258043));
+if($objPersona->buscar(38258043)){
+    echo 'true';
+}else{
+    echo $objPersona->getMensajeOperacion();
+} */
+
+/* $conexion = mysqli_connect('127.0.0.1', 'root', '', 'pruebaipoo');
 if($conexion){
     echo 'Se conecto';
 }else{
     echo 'No se conecto';
 }
+$dni = 3825803;
+$query = "SELECT * FROM persona";
+$resultado = mysqli_query($conexion, $query);
+var_dump($resultado);
+$resultadoPosta = mysqli_fetch_all($resultado);
+var_dump($resultadoPosta);
+if(mysqli_query($conexion, $query)){
+
+} */

@@ -5,7 +5,7 @@ CREATE TABLE persona(
     nombre VARCHAR(20) NOT NULL,
     apellido VARCHAR(20) NOT NULL,
     PRIMARY KEY(dni)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_cl;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE empleado(
     dniempleado INT(10) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE empleado(
     ON UPDATE CASCADE
     ON DELETE CASCADE,
     PRIMARY KEY (dniempleado)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_cl;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE cliente(
     dnicliente INT(10) NOT NULL,
@@ -23,13 +23,13 @@ CREATE TABLE cliente(
     ON UPDATE CASCADE
     ON DELETE CASCADE,
     PRIMARY KEY (dnicliente)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_cl;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE producto(
     id INT(5) NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_cl;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE compra(
     idcompra INT(5) NOT NULL AUTO_INCREMENT,
@@ -46,7 +46,7 @@ CREATE TABLE compra(
     ON UPDATE CASCADE
     ON DELETE CASCADE,
     PRIMARY KEY (idcompra)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_cl;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 /*Agregar a todas las tablas la codificacion pa que no de problema
 DEFAULT CHARSET=utf8 COLLATE utf8_unicode_cl

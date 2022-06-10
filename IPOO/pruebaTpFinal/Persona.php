@@ -1,5 +1,5 @@
 <?php
-require_once('DB.php');
+require_once('DataBase.php');
 class Persona{
     //atributos
     private $dni;
@@ -46,23 +46,43 @@ class Persona{
 
     //busca en la db el dni de la persona
     public function buscar($dni){
-        $base = new DB();
+        $base = new DataBase();
         $consultaPersona = "SELECT * FROM persona WHERE dni=$dni";
         $respuesta = false;
-        if($base->iniciar()){
-            if($base->ejecutar($consultaPersona)){
-                if($row2 = $base->registro()){
-                    $this->setDni($dni);
-                    $this->setNombre($row2['nombre']);
-                    $this->setApellido($row2['apellido']);
-                    $respuesta = true;
-                }
-            }else{
-                $this->setMensajeOperacion($base->getError());
-            }
+        $resultado = $base->query($consultaPersona);
+        if($resultado[0]){
+            $consultaRespondida = $base->getResultado();
+            $this->setDni($consultaRespondida['dni']);
+            $this->setNombre($consultaRespondida['nombre']);
+            $this->setApellido($consultaRespondida['apellido']);
+            $respuesta = true;
         }else{
             $this->setMensajeOperacion($base->getError());
         }
         return $respuesta;
     }
+    
+    //Para usar el insert tiene que crear una instancia y con cargar() cargarle los datos que quiere meter
+    public function insert(){
+        $respuesta = false;
+        $base = new DataBase();
+        $consulta = "INSERT INTO persona VALUES ('{$this->getDni()}', '{$this->getNombre()}', '{$this->getApellido()}')";
+        $resultado = $base->query($consulta);
+        if($resultado[0]){
+            $respuesta = true;
+        }else{
+            $this->setMensajeOperacion($base->getError()); 
+        }
+        return $respuesta;
+    }
+
+
+    public function __toString(){
+        $str = "
+        Dni: {$this->getDni()}.\n
+        Nombre: {$this->getNombre()}.\n
+        Apellido: {$this->getApellido()}.\n";
+        return $str;
+    }
+
 }
