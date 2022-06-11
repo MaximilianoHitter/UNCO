@@ -63,7 +63,7 @@ const anexo = document.querySelector('.anexo');
 const submit = document.querySelector('.submit');
 
 //RegExp
-const verificacion = new RegExp(/^[a-zA-Z ]+$/);
+const verificacion = new RegExp(/^[a-zA-Z ']+$/);
 
 
 //eventListeners
@@ -123,7 +123,7 @@ edad.addEventListener('change', (e) => {
         edad.classList.add('error');
         Hedad.classList.remove('invisible');
         Hedad.classList.add('visible');
-        
+
     } else {
         //gut
         edad.classList.remove('error');
@@ -143,9 +143,9 @@ importe.addEventListener('change', (e) => {
         Himporte.classList.remove('invisible');
         Himporte.classList.add('visible');
     } else {
-        if(importeValor)
+        if (importeValor)
         //gut
-        importe.classList.remove('error');
+            importe.classList.remove('error');
         importe.classList.add('correcto');
         Himporte.classList.add('invisible');
         Himporte.classList.remove('visible');
@@ -182,13 +182,13 @@ email.addEventListener('change', (e) => {
 //Comprobacion nombre 
 nombre.addEventListener('change', (e) => {
     let nombreValor = e.target.value;
-    if(!verificacion.test(nombreValor)){
+    if (!verificacion.test(nombreValor)) {
         //bad
         nombre.classList.add('error');
         nombre.classList.remove('correcto');
         Hnombre.classList.remove('invisible');
         Hnombre.classList.add('visible');
-    }else{
+    } else {
         //gut
         nombre.classList.add('correcto');
         nombre.classList.remove('error');
@@ -202,13 +202,13 @@ nombre.addEventListener('change', (e) => {
 //Comprobacion apellido
 apellido.addEventListener('change', (e) => {
     let apellidoValor = e.target.value;
-    if(!verificacion.test(apellidoValor)){
+    if (!verificacion.test(apellidoValor)) {
         //bad
         apellido.classList.add('error');
         apellido.classList.remove('correcto');
         Hapellido.classList.remove('invisible');
         Hapellido.classList.add('visible');
-    }else{
+    } else {
         //gut
         apellido.classList.add('correcto');
         apellido.classList.remove('error');
@@ -221,25 +221,25 @@ apellido.addEventListener('change', (e) => {
 
 submit.addEventListener('click', (e) => {
     e.preventDefault();
-    if(fechaDate.classList.contains('error') || edad.classList.contains('error') || importe.classList.contains('error') || email.classList.contains('error') || nombre.classList.contains('error') || apellido.classList.contains('error')){
+    if (fechaDate.classList.contains('error') || edad.classList.contains('error') || importe.classList.contains('error') || email.classList.contains('error') || nombre.classList.contains('error') || apellido.classList.contains('error')) {
         //bad
         errorForm.classList.remove('invisible');
         errorForm.classList.add('visible');
-    }else{
+    } else {
         //gut
         errorForm.classList.remove('error');
         errorForm.classList.add('invisible');
         let objDatos = {
-            fecha:fechaDate.value,
-            edad:edad.value,
-            importe:importe.value,
-            email:email.value,
-            nombre:nombre.value,
-            apellido:apellido.value,
-            anexo:anexo.value
+            fecha: fechaDate.value,
+            edad: edad.value,
+            importe: importe.value,
+            email: email.value,
+            nombre: nombre.value,
+            apellido: apellido.value,
+            anexo: anexo.value
         };
         //console.table(objDatos);
         localStorage.setItem('usuario', JSON.stringify(objDatos));
     }
-    
+
 })

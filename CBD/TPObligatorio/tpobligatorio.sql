@@ -113,3 +113,4 @@ CREATE TABLE entrada(
     ON DELETE CASCADE,
     PRIMARY KEY (numeroentrada)
 )ENGINE=InnoDB;
+/*Entrada tabla creada*/

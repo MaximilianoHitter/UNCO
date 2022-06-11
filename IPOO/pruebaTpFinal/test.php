@@ -1,23 +1,32 @@
 <?php
 require_once('Persona.php');
 $objPersona = new Persona();
-if($objPersona->buscar(38258043)){
+if($objPersona->buscar(38258044)){
     echo $objPersona;
+}else{
+    echo $objPersona->getMensajeOperacion();
 }
 
 $objPersona->__toString();
 
 //Para update
-$objPersona = new Persona();
-$objPersona->cargar(15215614, 'Josecito', 'p');
-$objPersona->update();
+/*$objPersona2 = new Persona();
+$objPersona2->cargar(42264728, 'Jero', 'pa');
+$objPersona2->insert();
 
-$objPersona->__toString();
+$objPersona2->__toString();
+
+$objPersona2->cargar(42264728, 'Jeronimo', 'pa');
+$objPersona2->update();
+
+echo $objPersona2;
 
 //Insertar
-/*$objPersonaNueva = new Persona();
+$objPersonaNueva = new Persona();
 $objPersonaNueva->cargar(15215614, 'Pepe', 'l');
 $objPersonaNueva->insert();
+echo $objPersonaNueva->__toString();
+/*
 Funciono ok, con un warning pero funco
 */
 
