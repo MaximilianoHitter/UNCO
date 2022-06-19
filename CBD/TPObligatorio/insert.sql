@@ -67,6 +67,10 @@ INSERT INTO asiento VALUES (3, 1, 1);
 INSERT INTO asiento VALUES (3, 2, 1);
 INSERT INTO asiento VALUES (3, 3, 1);
 INSERT INTO asiento VALUES (3, 4, 1); 
+INSERT INTO asiento VALUES (4, 1, 1);
+INSERT INTO asiento VALUES (4, 2, 1);
+INSERT INTO asiento VALUES (4, 3, 1);
+INSERT INTO asiento VALUES (4, 4, 1);
 
 /*Insert de Entrada*/
 INSERT INTO entrada VALUES (1, 'DNI', 12268313, 1, 1, 1, '2022-06-15');
@@ -79,47 +83,28 @@ INSERT INTO entrada VALUES (6, 'DNI', 12268313, 3, 2, 2, '2022-05-15');
 /*3.a*/
 /*Se insertaron en linea 19*/
 
-/*3.b*/
+/*3.b Ok*/
 UPDATE funcion SET hora='20:00' WHERE fecha='2022-06-24';
 
-/*3.c*/
+/*3.c Ok*/
 DELETE FROM encargado NOT EXISTS(SELECT * FROM encargado AS e JOIN sala AS s ON e.tipodoc = s.tipodoc AND e.nrodocumento = s.nrodocumento);/*No funciono*/
 DELETE encargado FROM encargado LEFT JOIN sala ON encargado.tipodoc = sala.tipodoc AND encargado.nrodocumento =  sala.nrodocumento WHERE sala.nrodocumento IS NULL AND sala.tipodoc IS NULL;
 
-/*4.a*/
+/*4.a Ok*/
 SELECT e.numeroentrada, e.nroasiento, e.idsala, e.idfuncion FROM entrada AS e INNER JOIN funcion ON e.idfuncion = funcion.idfuncion AND e.idsala = funcion.idsala WHERE funcion.fecha > '2022-06-22';
 
 /*4.b*/
-INSERT INTO sala VALUES(default, '3D', 30, '3D', 'DNI', '38258043');
-INSERT INTO asiento VALUES('2', '1', '1');
-INSERT INTO asiento VALUES('2', '2', '1');
-INSERT INTO asiento VALUES('2', '3', '1');
-INSERT INTO funcion VALUES( 2, '2022-06-23', '21:00', '2', 2, 1);
-INSERT INTO entrada VALUES(default, 'DNI', '15975346', '2', '2', 1, '2022-06-22');
+SELECT asiento.idsala, asiento.nroasiento, asiento.fila FROM asiento LEFT JOIN entrada AS e ON asiento.idsala = e.idsala AND asiento.nroasiento = e.nroasiento JOIN sala AS s ON asiento.idsala = s.idsala WHERE s.tipo = '3D' AND e.numeroentrada IS NULL;
 
-/*Subconsulta*/    
-SELECT a.idsala, a.nroasiento, a.fila FROM asiento AS a JOIN sala AS s ON a.idsala = s.idsala WHERE EXISTS(SELECT b.idsala, b.nroasiento, b.fila FROM asiento AS b JOIN entrada AS e ON b.idsala = e.idsala AND b.nroasiento = e.nroasiento) AND s.tipo = '3D';
-
-/*funco*/SELECT s.idsala, e.nroasiento FROM sala AS s JOIN entrada AS e ON s.idsala = e.idsala WHERE s.tipo = '3D';/*trajo solo el nroasiento*/
-
-SELECT a.idsala, a.nroasiento FROM asiento AS a WHERE NOT EXISTS(SELECT e.idsala, e.nroasiento FROM entrada AS e INNER JOIN sala AS s ON e.idsala = s.idsala WHERE s.tipo = '3D'); 
-
-SELECT idsala, nroasiento, fila FROM asiento WHERE NOT EXISTS(SELECT a.idsala, a.nroasiento, a.fila FROM asiento AS a INNER JOIN entrada AS e ON a.idsala = e.idsala AND a.nroasiento = e.nroasiento INNER JOIN sala AS s ON a.idsala = s.idsala WHERE s.tipo = '3D'); 
 
 /*Sergio*/
-SELECT * FROM asiento WHERE NOT EXISTS (SELECT entrada.idsala, sala.idsala FROM entrada INNER JOIN sala ON entrada.idsala = sala.idsala WHERE sala.tipo = '3D');
+SELECT * FROM asiento WHERE NOT EXISTS (SELECT entrada.idsala, entrada.nroasiento FROM entrada INNER JOIN sala ON entrada.idsala = sala.idsala WHERE sala.tipo = '3D' AND asiento.nroasiento = entrada.nroasiento);
 
 
-SELECT * FROM asiento WHERE NOT EXISTS(SELECT * FROM asiento JOIN entrada ON asiento.idsala = entrada.idsala AND asiento.nroasiento = entrada.nroasiento)
-
-SELECT a.idsala, a.nroasiento FROM asiento AS a WHERE NOT EXISTS(SELECT e.idsala, e.nroasiento FROM entrada AS e INNER JOIN sala AS s ON a.nroasiento = e.nroasiento AND a.idsala = s.idsala WHERE s.tipo = '3D'); 
-/*Ok*/
-/*4.c*/   
+/*4.c Ok*/   
 SELECT p.idpublicidad, p.duracion, COUNT(f.idfuncion) AS cantidad FROM publicidad AS p JOIN funcion AS f ON p.idpublicidad = f.idpublicidadinicio WHERE f.fecha >= '2022-01-01' GROUP BY p.idpublicidad;
   
-/*4.d*/   
-SELECT fechaemision, COUNT(*) AS cantidad FROM entrada WHERE entrada.fechaemision LIKE '2022-05-%' JOIN funcion ON entrada.idfuncion = funcion.idfuncion WHERE idpublicidadfinal IN
- (SELECT idpublicidadfinal FROM funcion JOIN publicidad ON 
- funcion.idpublicidadfinal = publicidad.idpublicidad WHERE publicidad.duracion LIKE '00:05:%');
-
- (SELECT idpublicidadfinal FROM funcion JOIN publicidad ON funcion.idpublicidadfinal = publicidad.idpublicidad WHERE publicidad.duracion LIKE '00:05:%')
+/*4.d Ok*/   
+SELECT e.fechaemision, COUNT(e.numeroentrada) AS cantidad FROM entrada AS e JOIN funcion AS f on e.idfuncion = f.idfuncion WHERE e.fechaemision LIKE '2022-05-%' AND f.idpublicidadfinal IN(
+    SELECT f.idpublicidadfinal FROM funcion AS f JOIN publicidad AS p ON f.idpublicidadfinal = p.idpublicidad WHERE p.duracion LIKE '00:05:%'
+);
