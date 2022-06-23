@@ -5,6 +5,7 @@ class Empresa{
     private $enombre;
     private $edireccion;
     private $mensajeOp;
+    static $mensajeFallo = '';
 
     public function __construct(){
         $this->idempresa = null;
@@ -36,6 +37,12 @@ class Empresa{
     }
     public function setMensajeOp($mensajeOp){
         $this->mensajeOp = $mensajeOp;
+    }
+    public function getMensajeFallo(){
+        return $this->mensajeFallo;
+    }
+    public function setMensajeFallo($mensajeFallo){
+        $this->mensajeFallo = $mensajeFallo;
     }
 
     public function __toString(){
@@ -94,9 +101,11 @@ class Empresa{
                 }
             }else{
                 //$this->setMensajeOp($base->getError()); No se puede usar
+                Empresa::setMensajeFallo($base->getError());
             }
         }else{
             //$this->setMensajeOp($base->getError()); No se puede usar
+            Empresa::setMensajeFallo($base->getError());
         }
         return $arregloEmpresa;
     }
@@ -149,4 +158,6 @@ class Empresa{
         return $respuesta;
     }
 
+
+    
 }

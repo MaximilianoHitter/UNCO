@@ -7,6 +7,7 @@ class ResponsableV {
     private $nombre;
     private $apellido;
     private $mensajeOp;
+    static $mensajeFallo = '';
 
     //Constructo
     public function __construct(){
@@ -53,6 +54,12 @@ class ResponsableV {
     }
     public function setMensajeOp($mensajeOp){
         $this->mensajeOp = $mensajeOp;
+    }
+    public function getMensajeFallo(){
+        return $this->mensajeFallo;
+    }
+    public function setMensajeFallo($mensajeFallo){
+        $this->mensajeFallo = $mensajeFallo;
     }
 
     //toString
@@ -112,12 +119,61 @@ class ResponsableV {
                     array_push($arregloResponsable, $responsable);
                 }
             }else{
-                //
+                ResponsableV::setMensajeFallo($base->getError());
             }
         }else{
             //$this->setMensajeOp($base->getError());
+            ResponsableV::setMensajeFallo($base->getError());
         }
         return $arregloResponsable;
+    }
+    
+    public function insertar(){
+        $base = new BaseDatos();
+        $respuesta = false;
+        $consultaInsertar = "INSERT INTO responsable VALUES ({$this->getNumEmpleado()}, {$this->getNumLicencia()}, {$this->getNombre()}, {$this->getApellido()})";
+        if($base->Iniciar()){
+            if($base->Ejecutar($consultaInsertar)){
+                $respuesta = true;
+            }else{
+                $this->setMensajeOp($base->getError());    
+            }
+        }else{
+            $this->setMensajeOp($base->getError());
+        }
+        return $respuesta;
+    }
+
+    public function modificar(){
+        $base = new BaseDatos();
+        $respuesta = false;
+        $consultaModifica = "UPDATE responsable SET rnumerolicencia = {$this->getNumLicencia()}, rnombre = {$this->getNombre()}, rapellido = {$this->getApellido()} WHERE rnumeroempleado = {$this->getNumEmpleado()}";
+        if($base->Iniciar()){
+            if($base->Ejecutar($consultaModifica)){
+                $respuesta = true;
+            }else{
+                $this->setMensajeOp($base->getError());    
+            }
+        }else{
+            $this->setMensajeOp($base->getError());
+        }
+        return $respuesta;
+    }
+
+    public function eliminar(){
+        $base = new BaseDatos();
+        $respuesta = false;
+        $consultaElimina = "DELETE FROM responsable WHERE rnumeroempleado = {$this->getNumEmpleado()}";
+        if($base->Iniciar()){
+            if($base->Ejecutar($consultaElimina)){
+                $respuesta = true;
+            }else{
+                $this->setMensajeOp($base->getError());
+            }
+        }else{
+            $this->setMensajeOp($base->getError());
+        }
+        return $respuesta;
     }
     
 }
