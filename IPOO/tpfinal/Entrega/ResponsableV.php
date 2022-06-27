@@ -55,11 +55,11 @@ class ResponsableV {
     public function setMensajeOp($mensajeOp){
         $this->mensajeOp = $mensajeOp;
     }
-    public function getMensajeFallo(){
-        return $this->mensajeFallo;
+    public static function getMensajeFallo(){
+        return ResponsableV::$mensajeFallo;
     }
-    public function setMensajeFallo($mensajeFallo){
-        $this->mensajeFallo = $mensajeFallo;
+    public static function setMensajeFallo($mensajeFallo){
+        ResponsableV::$mensajeFallo = $mensajeFallo;
     }
 
     //toString
@@ -131,7 +131,7 @@ class ResponsableV {
     public function insertar(){
         $base = new BaseDatos();
         $respuesta = false;
-        $consultaInsertar = "INSERT INTO responsable VALUES ({$this->getNumEmpleado()}, {$this->getNumLicencia()}, {$this->getNombre()}, {$this->getApellido()})";
+        $consultaInsertar = "INSERT INTO responsable VALUES ({$this->getNumEmpleado()}, {$this->getNumLicencia()}, '{$this->getNombre()}', '{$this->getApellido()}')";
         if($base->Iniciar()){
             if($base->Ejecutar($consultaInsertar)){
                 $respuesta = true;
@@ -147,7 +147,7 @@ class ResponsableV {
     public function modificar(){
         $base = new BaseDatos();
         $respuesta = false;
-        $consultaModifica = "UPDATE responsable SET rnumerolicencia = {$this->getNumLicencia()}, rnombre = {$this->getNombre()}, rapellido = {$this->getApellido()} WHERE rnumeroempleado = {$this->getNumEmpleado()}";
+        $consultaModifica = "UPDATE responsable SET rnumerolicencia = {$this->getNumLicencia()}, rnombre = '{$this->getNombre()}', rapellido = '{$this->getApellido()}' WHERE rnumeroempleado = {$this->getNumEmpleado()}";
         if($base->Iniciar()){
             if($base->Ejecutar($consultaModifica)){
                 $respuesta = true;

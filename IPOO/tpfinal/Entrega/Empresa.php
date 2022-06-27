@@ -8,7 +8,7 @@ class Empresa{
     static $mensajeFallo = '';
 
     public function __construct(){
-        $this->idempresa = null;
+        $this->idempresa = '';
         $this->enombre = '';
         $this->edireccion = '';
         $this->mensajeOp = '';
@@ -38,11 +38,11 @@ class Empresa{
     public function setMensajeOp($mensajeOp){
         $this->mensajeOp = $mensajeOp;
     }
-    public function getMensajeFallo(){
-        return $this->mensajeFallo;
+    public static function getMensajeFallo(){
+        return Empresa::$mensajeFallo;
     }
-    public function setMensajeFallo($mensajeFallo){
-        $this->mensajeFallo = $mensajeFallo;
+    public static function setMensajeFallo($mensajeFallo){
+        Empresa::$mensajeFallo = $mensajeFallo;
     }
 
     public function __toString(){
@@ -61,7 +61,7 @@ class Empresa{
 
     public function buscar($idempresa){
         $base = new BaseDatos();
-        $consultaEmpresa = "SELECT * FROM empresa WHERE idempresa = $idempresa";
+        $consultaEmpresa = "SELECT * FROM empresa WHERE 'idempresa' = $idempresa";
         $respuesta = false;
         if($base->Iniciar()){
             if($base->Ejecutar($consultaEmpresa)){
@@ -113,7 +113,7 @@ class Empresa{
     public function insertar(){
         $base = new BaseDatos();
         $respuesta = false;
-        $consultaInsertar = "INSERT INTO empresa VALUES({$this->getIdempresa()}, {$this->getNombre()}, {$this->getEdireccion()})";
+        $consultaInsertar = "INSERT INTO empresa VALUES({$this->getIdempresa()}, '{$this->getNombre()}', '{$this->getEdireccion()}')";
         if($base->Iniciar()){
             if($base->Ejecutar($consultaInsertar)){
                 $respuesta = true;
@@ -129,7 +129,7 @@ class Empresa{
     public function modificar(){
         $respuesta = false;
         $base = new BaseDatos();
-        $consultaModifica = "UPDATE empresa SET enombre = {$this->getNombre()}, edireccion = {$this->getEdireccion()} WHERE idempresa = {$this->getIdempresa()}";
+        $consultaModifica = "UPDATE empresa SET enombre = '{$this->getNombre()}', edireccion = '{$this->getEdireccion()}' WHERE idempresa = {$this->getIdempresa()}";
         if($base->Iniciar()){
             if($base->Ejecutar($consultaModifica)){
                 $respuesta = true;
