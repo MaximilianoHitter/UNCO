@@ -39,6 +39,10 @@ body {
     cursor: pointer;
 }
 
+.nav-bar li button:hover {
+    border: 5px dotted white;
+}
+
 .selected {
     border: 5px dotted white;
 }
@@ -103,6 +107,11 @@ input {
     text-align: center;
 }
 
+input:hover {
+    background-color: rgb(2, 187, 2);
+    color: black;
+}
+
 .enfasis {
     font-weight: bolder;
     color: red;
@@ -135,10 +144,12 @@ footer {
 .correcto {
     border: 5px solid rgb(2, 187, 2);
     border-radius: 5px;
+    background-color: rgba(0, 255, 255, 0.856);
+    color: black;
 }
 
 .correcto:focus {
-    border: 5px solid rgb(2, 187, 2);
+    border: 5px dotted rgb(2, 187, 2);
     border-radius: 5px;
 }
 
@@ -153,6 +164,10 @@ textarea {
 
 input::placeholder {
     color: white;
+}
+
+.Hfecha {
+    margin: 0 auto;
 }
 
 .submit {
@@ -330,6 +345,10 @@ input::placeholder {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgb(96, 96, 236);
+}
+
+.productoCat:hover {
+    border: 5px solid white;
 }
 
 .productoCat img {

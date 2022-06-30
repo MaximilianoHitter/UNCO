@@ -117,7 +117,7 @@ fechaDate.addEventListener('change', (e) => {
 //Faltaria comprobar si esta bien segun la fecha de nacimiento
 edad.addEventListener('change', (e) => {
     let edadValor = e.target.value;
-    if ((edadValor % 1) != 0 || edadValor <= 0) {
+    if ((edadValor % 1) != 0 || edadValor <= 0 || edadValor == '') {
         //bad
         edad.classList.remove('correcto');
         edad.classList.add('error');
@@ -221,11 +221,7 @@ apellido.addEventListener('change', (e) => {
 
 submit.addEventListener('click', (e) => {
     e.preventDefault();
-    if (fechaDate.classList.contains('error') || edad.classList.contains('error') || importe.classList.contains('error') || email.classList.contains('error') || nombre.classList.contains('error') || apellido.classList.contains('error')) {
-        //bad
-        errorForm.classList.remove('invisible');
-        errorForm.classList.add('visible');
-    } else {
+    if (fechaDate.classList.contains('correcto') && edad.classList.contains('correcto') && importe.classList.contains('correcto') && email.classList.contains('correcto') && nombre.classList.contains('correcto') && apellido.classList.contains('correcto')) {
         //gut
         errorForm.classList.remove('error');
         errorForm.classList.add('invisible');
@@ -240,6 +236,20 @@ submit.addEventListener('click', (e) => {
         };
         //console.table(objDatos);
         localStorage.setItem('usuario', JSON.stringify(objDatos));
+        alert('Los campos se han rellenado correctamente!');
+        formulario.reset();
+        //reseteo el borde de los campos 
+        apellido.classList.remove('correcto');
+        nombre.classList.remove('correcto');
+        email.classList.remove('correcto');
+        importe.classList.remove('correcto');
+        edad.classList.remove('correcto');
+        fechaDate.classList.remove('correcto');
+    } else {
+        //bad
+        errorForm.classList.remove('invisible');
+        errorForm.classList.add('visible');
+
     }
 
 })

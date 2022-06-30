@@ -25,7 +25,9 @@ CREATE TABLE viaje (
     tipoAsiento varchar(150), /*primera clase o no, semicama o cama*/
     idayvuelta varchar(150), /*si no*/
     PRIMARY KEY (idviaje),
-    FOREIGN KEY (idempresa) REFERENCES empresa (idempresa),
+    FOREIGN KEY (idempresa) REFERENCES empresa (idempresa)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
 	FOREIGN KEY (rnumeroempleado) REFERENCES responsable (rnumeroempleado)
     ON UPDATE CASCADE
     ON DELETE CASCADE
@@ -38,7 +40,9 @@ CREATE TABLE pasajero (
 	ptelefono int, 
 	idviaje bigint,
     PRIMARY KEY (rdocumento),
-	FOREIGN KEY (idviaje) REFERENCES viaje (idviaje)	
+	FOREIGN KEY (idviaje) REFERENCES viaje (idviaje)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8; 
  
   

@@ -87,7 +87,7 @@ class Pasajero{
                     if($objViaje->buscar($idViaje)){
                         $this->setObjViaje($objViaje);
                     }else{
-                        $objViaje = 'No encontrado';
+                        $objViaje = '';
                         $this->setObjViaje($objViaje);
                     }
                     $respuesta = true;
@@ -139,7 +139,7 @@ class Pasajero{
     public function insertar(){
         $base = new BaseDatos();
         $respuesta = false;
-        $objViaje = $this->getObjViaje(); 
+        $objViaje = $this->getObjViaje();
         $idviaje = $objViaje->getIdviaje();
         $consultaInsertar = "INSERT INTO pasajero VALUES ({$this->getRdocumento()}, '{$this->getPnombre()}', '{$this->getPapellido()}', {$this->getPtelefono()}, $idviaje)";
         if($base->Iniciar()){

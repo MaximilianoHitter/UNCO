@@ -1,4 +1,6 @@
 //crear carrito en storage
+//const filtros = document.querySelector('.filtros');
+//filtros.style.display = 'hidden';
 let arrayCarrito = [];
 const carritoItems = document.getElementsByClassName('carritoItems')[0];
 localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
@@ -243,7 +245,14 @@ function limpiarHTMLCarrito() {
 }
 
 function pagar(pago) {
-    alert(`Yo no creo que tenga \$${pago}, mejor le inicio un juicio.`);
+    let nombre = JSON.parse(localStorage.getItem('usuario'));
+    if (nombre == null) {
+        alert(`Yo no creo que tenga \$${pago}. La policía está yendo a su domicilio.`);
+    } else {
+        nombre = nombre.nombre;
+        alert(`${nombre} no me mienta por favor, usted no tiene \$${pago}`);
+    }
+
 }
 
 function cargarCarrito() {

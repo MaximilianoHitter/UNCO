@@ -18,10 +18,10 @@ class ResponsableV {
     }
 
     public function cargarDatos($numEmpleado, $numLicencia, $nombre, $apellido){
-        $this->numEmpleado = $numEmpleado;
-        $this->numLicencia = $numLicencia;
-        $this->nombre = $nombre;
-        $this->apellido = $apellido;
+        $this->setNumEmpleado($numEmpleado);
+        $this->setNumLicencia($numLicencia);
+        $this->setNombre($nombre);
+        $this->setApellido($apellido);
     }
 
     //Getters y setters
@@ -76,7 +76,7 @@ class ResponsableV {
         return $str;
     }
 
-    public function Buscar($numEmpleado){
+    public function buscar($numEmpleado){
         $base = new BaseDatos();
         $respuesta = false;
         $consultaNumEmpleado = "SELECT * FROM responsable WHERE rnumeroempleado = $numEmpleado";
