@@ -61,7 +61,7 @@ class Empresa{
 
     public function buscar($idempresa){
         $base = new BaseDatos();
-        $consultaEmpresa = "SELECT * FROM empresa WHERE 'idempresa' = $idempresa";
+        $consultaEmpresa = "SELECT * FROM empresa WHERE idempresa= $idempresa";
         $respuesta = false;
         if($base->Iniciar()){
             if($base->Ejecutar($consultaEmpresa)){

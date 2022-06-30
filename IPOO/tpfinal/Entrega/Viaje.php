@@ -119,9 +119,9 @@ class Viaje{
 
     public function __toString(){
         $empresaObj = $this->getIdempresaObj();
-        $empresa = $empresaObj->__toString();
+        $empresa = $empresaObj->getIdempresa();
         $responsableObj = $this->getResponsableObj();
-        $responsable = $responsableObj->__toString();
+        $responsable = $responsableObj->getNumEmpleado();
         $str = "
         ID: {$this->getIdviaje()}.\n
         Destino: {$this->getVdestino()}.\n
@@ -136,11 +136,10 @@ class Viaje{
 
     public function buscar($idviaje){
         $base = new BaseDatos();
-        $consultaViaje = "SELECT * FROM viaje WHERE 'idviaje' = $idviaje";
+        $consultaViaje = "SELECT * FROM viaje WHERE idviaje = $idviaje";
         $respuesta = false;
         if($base->Iniciar()){
             if($base->Ejecutar($consultaViaje)){
-            }else{
                 if($row2 = $base->Registro()){
                     $this->setIdviaje($idviaje);
                     $this->setVdestino($row2['vdestino']);
@@ -164,6 +163,8 @@ class Viaje{
                     }
                     $respuesta = true;
                 }
+            }else{
+                
                 $this->setMensajeOp($base->getError());
             }
         }else{

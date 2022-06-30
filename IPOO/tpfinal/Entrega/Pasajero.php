@@ -74,7 +74,7 @@ class Pasajero{
     public function buscar($rdocumento){
         $base = new BaseDatos();
         $respuesta = false;
-        $consultaBusqueda = "SELECT * FROM pasajero WHERE 'rdocumento' = $rdocumento";
+        $consultaBusqueda = "SELECT * FROM pasajero WHERE rdocumento = $rdocumento";
         if($base->Iniciar()){
             if($base->Ejecutar($consultaBusqueda)){
                 if($row2 = $base->Registro()){
@@ -87,8 +87,7 @@ class Pasajero{
                     if($objViaje->buscar($idViaje)){
                         $this->setObjViaje($objViaje);
                     }else{
-                        $objViaje = '';
-                        $this->setObjViaje($objViaje);
+                        
                     }
                     $respuesta = true;
                 }
@@ -190,13 +189,13 @@ class Pasajero{
 
     public function __toString(){
         $objViaje = $this->getObjViaje();
-        $strViaje = $objViaje->__toString();
+        $strViaje = $objViaje->getIdviaje();
         $str = "
         Documento: {$this->getRdocumento()}.\n
         Nombre: {$this->getPnombre()}.\n
         Apellido: {$this->getPapellido()}.\n
         Telefono: {$this->getPtelefono()}.\n
-        Viaje: $strViaje";
+        Viaje: $strViaje.\n";
         return $str;
     }
 }

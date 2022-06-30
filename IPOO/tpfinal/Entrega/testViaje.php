@@ -154,13 +154,23 @@ function opcionesPasajero()
     //Menu pasajero
     $quedarse = true;
     while ($quedarse) {
-        echo "Menu pasajero.\n 1. Ver pasajeros.\n 2. Buscar pasajero.\n 3. Modificar pasajero.\n 4. Eliminar pasajero.\n 5. Cargar a un viaje.\n 6. Bajar de un viaje.\n 7. Cargar pasajero.\n 8. Salir\n";
+        echo "Menu pasajero.\n 1. Ver pasajeros.\n 2. Buscar pasajero.\n 3. Modificar pasajero.\n 4. Eliminar pasajero.\n 5. Cargar pasajero.\n 6. Salir\n";
         $selected = intval(trim(fgets(STDIN)));
         switch ($selected) {
             case '1':
                 //ver pasajeros
                 $arrayPasajeros = Pasajero::listar();
-                print_r($arrayPasajeros);
+                if(count($arrayPasajeros) == 0){
+                    echo "No hay pasajeros.\n";
+                }else{
+                    //print_r($arrayPasajeros);
+                    $lista = "";
+                    foreach ($arrayPasajeros as $key => $pasajero) {
+                        $strPasajero = $pasajero->__toString();
+                        $lista .= $strPasajero;   
+                    }
+                    echo $lista;
+                }
                 break;
 
             case '2':
@@ -197,6 +207,17 @@ function opcionesPasajero()
                     if ($telefonoPas != '') {
                         $objPasajero->setPtelefono($telefonoPas);
                     }
+                    $quedar = true;
+                    while ($quedar) {
+                        echo "Ingrese el id de un viaje existente: \n";
+                        $idViaje = intval(trim(fgets(STDIN)));
+                        $objViaje = new Viaje();
+                        if (!$objViaje->buscar($idViaje)) {
+                            echo "No existe dicho viaje.\n";
+                        } else {
+                            $quedar = false;
+                        }
+                    }
                     if ($objPasajero->modificar()) {
                         echo "Los datos se han modificado.\n";
                     } else {
@@ -224,47 +245,6 @@ function opcionesPasajero()
                 break;
 
             case '5':
-                //cargar a un viaje 
-                echo "Ingrese el documento de un pasajero: \n";
-                $dni = intval(trim(fgets(STDIN)));
-                $objPasajero = new Pasajero();
-                if ($objPasajero->buscar($dni)) {
-                    echo $objPasajero->__toString();
-                    $pasajeroViaje = $objPasajero->getObjViaje();
-                    $pasajeroViaje = $pasajeroViaje->getIdviaje();
-                    echo "Ingrese el numero de un viaje: \n";
-                    $numViaje = intval(trim(fgets(STDIN)));
-                    if ($numViaje == $pasajeroViaje) {
-                        echo "El pasajero ya ha sido cargado al viaje.\n";
-                    } else {
-                        $objViaje = new Viaje();
-                        if ($objViaje->buscar($numViaje)) {
-                            $objPasajero->setObjViaje($objViaje);
-                            echo "Se ha cargado el pasajero en dicho viaje.\n";
-                        } else {
-                            echo "No se ha encontrado ese viaje.\n";
-                        }
-                    }
-                } else {
-                    echo "No se encontró el pasajero.\n";
-                }
-                break;
-
-            case '6':
-                //eliminar de un viaje 
-                echo "Ingrese el documento de un pasajero: \n";
-                $dni = intval(trim(fgets(STDIN)));
-                $objPasajero = new Pasajero();
-                if ($objPasajero->buscar($dni)) {
-                    echo $objPasajero->__toString();
-                    $objPasajero->setObjViaje('');
-                    echo "Se ha eliminado el pasajero del viaje.\n";
-                } else {
-                    echo "No se encontró el pasajero.\n";
-                }
-                break;
-
-            case '7':
                 //cargar un pasajero
                 echo "Ingrese el dni: \n";
                 $dni = intval(trim(fgets(STDIN)));
@@ -272,30 +252,39 @@ function opcionesPasajero()
                 if ($objPasajero->buscar($dni)) {
                     echo "Ese pasajero ya existe.\n";
                 } else {
+                    $objPasajero->setRdocumento($dni);
                     echo "Ingrese el nombre: \n";
                     $nombrePas = trim(fgets(STDIN));
+                    $objPasajero->setPnombre($nombrePas);
                     echo "Ingrese el apellido: \n";
                     $apellidoPas = trim(fgets(STDIN));
+                    $objPasajero->setPapellido($apellidoPas);
                     echo "Ingrese el telefono: \n";
                     $telefonoPas = intval(trim(fgets(STDIN)));
-                    echo "Ingrese el número de viaje: \n";
-                    $idViaje = intval(trim(fgets(STDIN)));
-                    $objViaje = new Viaje();
-                    if ($objViaje->buscar($idViaje)) {
-                        $objPasajero->cargarDatos($dni, $nombrePas, $apellidoPas, $telefonoPas, '');
-                        if ($objPasajero->insertar()) {
-                            echo "Se ha ingresado al pasajero.\n";
-                        } else {
-                            echo "No se ha podido ingresar al pasajero.\n";
-                            echo $objPasajero->getMensajeOp();
+                    $objPasajero->setPtelefono($telefonoPas);
+                    $quedar = true;
+                    while($quedar){
+                        echo "Ingrese el número de viaje existente: \n";
+                        $idViaje = intval(trim(fgets(STDIN)));
+                        $objViaje = new Viaje();
+                        if($objViaje->buscar($idViaje)){
+                            $objPasajero->setObjViaje($objViaje);
+                            $quedar = false;
+                        }else{
+                            echo "Dicho viaje no existe.\n";
                         }
-                    } else {
-                        echo "No existe dicho viaje.\n";
                     }
+                    if ($objPasajero->insertar()) {
+                        echo "Se ha ingresado al pasajero.\n";
+                    } else {
+                        echo "No se ha podido ingresar al pasajero.\n";
+                        echo $objPasajero->getMensajeOp();
+                    }
+                    
                 }
                 break;
 
-            case '8':
+            case '6':
                 $quedarse = false;
                 break;
 
@@ -321,7 +310,13 @@ function opcionesResponsable()
                 if (count($arregloResponsables) == 0) {
                     echo "No hay responsables.\n";
                 } else {
-                    print_r($arregloResponsables);
+                    //print_r($arregloResponsables);
+                    $lista = "";
+                    foreach ($arregloResponsables as $key => $responsable) {
+                        $strResponsable = $responsable->__toString();
+                        $lista.= $strResponsable;
+                    }
+                    echo $lista;
                 }
                 break;
 
@@ -428,8 +423,8 @@ function opcionesResponsable()
 function opcionesViaje()
 {
 
-    $quedarse = true;
-    while ($quedarse) {
+    $quedarseViaje = true;
+    while ($quedarseViaje) {
         echo "Menu viaje.\n 1. Ver viajes.\n 2. Buscar viaje.\n 3. Modificar viaje.\n 4. Eliminar viaje.\n 5. Crear viaje\n 6. Salir\n";
         $selected = intval(trim(fgets(STDIN)));
         switch ($selected) {
@@ -439,7 +434,13 @@ function opcionesViaje()
                 if (count($arrayViajes) == 0) {
                     echo "No hay viajes.\n";
                 } else {
-                    print_r($arrayViajes);
+                    //print_r($arrayViajes);
+                    $lista = "";
+                    foreach ($arrayViajes as $key => $viaje) {
+                        $strViaje = $viaje->__toString();
+                        $lista .= $strViaje;
+                    }
+                    echo $lista;
                 }
                 break;
 
@@ -448,7 +449,7 @@ function opcionesViaje()
                 echo "Ingrese el número de viaje: \n";
                 $idViaje = intval(trim(fgets(STDIN)));
                 $objViaje = new Viaje();
-                if ($objViaje->buscar($idViaje)) {
+                if($objViaje->buscar($idViaje)) {
                     echo $objViaje->__toString();
                 } else {
                     echo "No se encontró dicho viaje.\n";
@@ -456,7 +457,6 @@ function opcionesViaje()
                 break;
 
             case '3':
-                //NO FUNCO
                 //modificar viaje
                 echo "Ingrese el número de viaje: \n";
                 $idViaje = intval(trim(fgets(STDIN)));
@@ -512,10 +512,10 @@ function opcionesViaje()
                     if($idaovuelta != ''){
                         $objViaje->setIdayvuelta($idaovuelta);
                     }
-                    if($objViaje->insertar()){
-                        echo "Se ha creado correctamente el viaje.\n";
+                    if($objViaje->modificar()){
+                        echo "Se ha modificado correctamente el viaje.\n";
                     }else{
-                        echo "Ha fallado la insercion del viaje.\n";
+                        echo "Ha fallado la modificacion del viaje.\n";
                         echo $objViaje->getMensajeOp();
                     }
                 } else {
@@ -567,10 +567,11 @@ function opcionesViaje()
                         $idEmpresa = intval(trim(fgets(STDIN)));
                         $objEmpresa = new Empresa();
                         if($objEmpresa->buscar($idEmpresa)){
-                            echo "Dicho id de empresa no existe.\n";
-                        }else{
                             $quedarse = false;
                             $objViaje->setIdempresaObj($objEmpresa);
+                           
+                        }else{
+                            echo "Dicho id de empresa no existe.\n";
                         }
                     }
                     $quedarse = true;
@@ -594,22 +595,22 @@ function opcionesViaje()
                     echo "Es ¿ida o vuelta?.\n";
                     $idaovuelta = trim(fgets(STDIN));
                     $objViaje->setIdayvuelta($idaovuelta);
+                    echo $objViaje->__toString();
                     if($objViaje->insertar()){
                         echo "El viaje se ha insertado.\n";
                     }else{
                         echo "El viaje no se ha insertado.\n";
                         echo $objViaje->getMensajeOp();
-                    }
-                }
-
+                    };
+                };
                 break;
 
             case '6':
-                $quedarse = false;
+                $quedarseViaje = false;
                 break;
 
             default:
-                # code...
+                
                 break;
         }
     }
@@ -629,7 +630,13 @@ function opciontesEmpresa()
                 if (count($arregloEmpresas) == 0) {
                     echo "No hay empresas cargadas.\n";
                 } else {
-                    print_r($arregloEmpresas);
+                    //print_r($arregloEmpresas);
+                    $lista = "";
+                    foreach ($arregloEmpresas as $key => $empresa) {
+                        $strEmpresa = $empresa->__toString();
+                        $lista .= $strEmpresa;
+                    }
+                    echo $lista;
                 }
                 break;
 
@@ -736,7 +743,7 @@ while ($salidaGeneral) {
     switch ($selected) {
         case '1':
             //pasajero
-            //opcionesPasajero();
+            opcionesPasajero();
             break;
 
         case '2':
