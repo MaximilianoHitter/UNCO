@@ -663,17 +663,19 @@ function opciontesEmpresa()
                     $enombre = trim(fgets(STDIN));
                     echo "Ingrese la dirección: \n";
                     $edireccion = trim(fgets(STDIN));
-                    if ($objEmpresa->cargarDatos($idempresa, $enombre, $edireccion)) {
-                        if ($objEmpresa->insertar()) {
+                    $objEmpresa->setNombre($enombre);
+                    $objEmpresa->setEdireccion($edireccion);
+                    //if ($objEmpresa->cargarDatos($idempresa, $enombre, $edireccion)) {
+                        if ($objEmpresa->modificar()) {
                             echo "Se ha modificado la empresa.\n";
                         } else {
                             echo "No se ha modificado la empresa.\n";
                             echo $objEmpresa->getMensajeOp();
                         }
-                    } else {
+                    /*} else {
                         echo "No se han ingresado los datos.\n";
                         echo $objEmpresa->getMensajeOp();
-                    }
+                    }*/
                 } else {
                     echo "No existe la empresa.\n";
                 }
