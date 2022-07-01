@@ -212,10 +212,21 @@ function opcionesPasajero()
                         echo "Ingrese el id de un viaje existente: \n";
                         $idViaje = intval(trim(fgets(STDIN)));
                         $objViaje = new Viaje();
-                        if (!$objViaje->buscar($idViaje)) {
-                            echo "No existe dicho viaje.\n";
+                        if ($objViaje->buscar($idViaje)) {
+                            $arrayPasajeros = Pasajero::listar("idviaje = $idViaje");
+                            $cantidadMaxAsientos = $objViaje->getCantMaxPasajeros();
+                            $cantidadVendidos = count($arrayPasajeros);
+                            if($cantidadVendidos < $cantidadMaxAsientos){
+                                $objPasajero->setObjViaje($objViaje);
+                                $quedar = false;
+                                echo "Este viaje posee lugar.\n";
+                            }else{
+                                echo "Este viaje no posee lugar.\n";
+                            }
+                            
                         } else {
-                            $quedar = false;
+                            
+                            echo "No existe dicho viaje.\n";
                         }
                     }
                     if ($objPasajero->modificar()) {
@@ -268,8 +279,21 @@ function opcionesPasajero()
                         $idViaje = intval(trim(fgets(STDIN)));
                         $objViaje = new Viaje();
                         if($objViaje->buscar($idViaje)){
-                            $objPasajero->setObjViaje($objViaje);
-                            $quedar = false;
+                            //consulta de cantidad de pasajeros
+                            //$consultaCantidad = "SELECT rdocumento FROM pasajero WHERE idviaje = $idViaje";
+                            $arrayPasajeros = Pasajero::listar("idviaje = $idViaje");
+                            $cantidadVendidos = count($arrayPasajeros);
+                            $cantidadMaxAsientos = $objViaje->getCantMaxPasajeros();
+                            if($cantidadVendidos < $cantidadMaxAsientos){
+                                //se puede cargar
+                                echo "Este viaje posee lugar.\n";
+                                $objPasajero->setObjViaje($objViaje);
+                                $quedar = false;
+                            }else{
+                                echo "El viaje esta lleno.\n";
+                            }
+                            //carga
+                            
                         }else{
                             echo "Dicho viaje no existe.\n";
                         }
@@ -468,10 +492,23 @@ function opcionesViaje()
                     if($vdestino != ''){
                         $objViaje->setVdestino($vdestino);
                     }
-                    echo "Ingrese cantidad maxima de pasajeros: \n";
-                    $vcantmaxpasajeros = intval(trim(fgets(STDIN)));
-                    if($vcantmaxpasajeros != 0){
-                        $objViaje->setCantMaxPasajeros($vcantmaxpasajeros);
+                    $quedar = true;
+                    while ($quedar) {
+                        echo "Ingrese cantidad maxima de pasajeros: \n";
+                        $vcantmaxpasajeros = intval(trim(fgets(STDIN)));
+                        if($vcantmaxpasajeros != 0){
+                            $arrayPasajeros = Pasajero::listar("idviaje = $idViaje");
+                            $cantidadVendidos = count($arrayPasajeros);
+                            if($cantidadVendidos <= $vcantmaxpasajeros){
+                                echo "Se han vendidos menos pasajes que la cantidad que desea ingresar.\n";
+                                $objViaje->setCantMaxPasajeros($vcantmaxpasajeros);
+                                $quedar = false;
+                            }else{
+                                echo "La cantidad mínima de asientos puede ser $cantidadVendidos.\n";
+                            } 
+                    }
+                    
+                        
                     }
                     $quedar = true;
                     while ($quedar) {
