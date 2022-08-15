@@ -192,14 +192,14 @@ class Viaje{
                     if($objEmpresa->buscar($idempresa)){
                         
                     }else{
-                        $objEmpresa = 'No contiene';
+                        $objEmpresa = null;
                     }
                     $objResponsable = new ResponsableV();
                     $rnumeroempleado = $row2['rnumeroempleado'];
                     if($objResponsable->buscar($rnumeroempleado)){
 
                     }else{
-                        $objResponsable = 'No contiene';
+                        $objResponsable = null;
                     }
                     $vimporte = $row2['vimporte'];
                     $tipoasiento = $row2['tipoAsiento'];
