@@ -1,0 +1,32 @@
+body {
+    background-color: aquamarine;
+    margin: 40px auto;
+    padding: 0px 30px;
+}
+
+form {
+    background-color: blue;
+    border-radius: 20px;
+    padding: 20px;
+    width: 400px;
+
+}
+
+label {
+    color: white;
+    text-decoration: underline;
+}
+
+input {
+    background-color: white;
+    color: red;
+}
+
+button {
+    background-color: black;
+}
+
+.label1 {
+    text-decoration: none;
+}
+
