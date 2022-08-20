@@ -1,0 +1,33 @@
+body {
+    background-color: aquamarine;
+    margin: 40px auto;
+    padding: 0px 30px;
+    color: black;
+}
+
+form {
+    background-color: rgb(250, 151, 151);
+    border-radius: 20px;
+    padding: 20px;
+    width: 450px;
+
+}
+
+label {
+    color: rgb(3, 0, 0);
+    text-decoration: none;
+}
+
+input {
+    background-color: rgb(0, 0, 0);
+    color: red;
+}
+
+button {
+    background-color: black;
+}
+
+.label1 {
+    text-decoration: none;
+}
+
