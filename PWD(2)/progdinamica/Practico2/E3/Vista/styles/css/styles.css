@@ -1,0 +1,57 @@
+body {
+    background-color: grey;
+    margin: 40px auto;
+}
+
+form {
+    width: 400px;
+    margin: 10px auto;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    border-radius: 20px;
+}
+
+div {
+    grid-column: 2;
+    text-align: center;
+}
+
+input {
+    margin: 0px auto;
+}
+
+.contenedor {
+    margin: 10px auto;
+}
+
+button {
+    background-color: greenyellow;
+    border-radius: 15px;
+    width: inherit;
+    margin-bottom: 15px;
+}
+
+.emailV {
+    display: none;
+    padding-top: 5px;
+    color: red;
+}
+
+.passV {
+    display: none;
+    padding-top: 5px;
+    color: red;
+}
+
+.borde {
+    border: 3px solid black;
+}
+
+.gut {
+    border-color: green;
+}
+
+.bad {
+    border-color: red;
+}

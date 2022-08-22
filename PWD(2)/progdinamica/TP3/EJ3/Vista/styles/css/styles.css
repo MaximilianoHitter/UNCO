@@ -1,0 +1,134 @@
+body {
+    background-color: rgb(70, 70, 255);
+}
+
+form {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    width: 1000px;
+    margin: 20px auto;
+    border: 3px solid rgb(112, 111, 111);
+}
+
+main {
+    width: fit-content;
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 0px;
+}
+
+fieldset {
+    padding: 5px 0px;
+}
+
+legend {
+    padding-left: 30px;
+}
+
+.contenido {
+    margin: 5px 5%;
+    width: 90%;
+}
+
+.titulo {
+    border: 3px solid rgb(112, 111, 111);
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.grid1 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-content: center;
+}
+
+.p1 {
+    grid-column: 1;
+    width: 90%;
+}
+
+.p2 {
+    grid-column: 2;
+    width: 90%;
+}
+
+div {
+    display: inline-block;
+    padding: 1px 13px;
+}
+
+.contenedor {
+    display: block;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.check1 {
+    grid-column: 1;
+    display: inline-block;
+}
+
+.check2 {
+    grid-column: 2;
+    display: inline-block;
+}
+
+.check3 {
+    grid-column: 3;
+    display: inline-block;
+}
+
+.textarea {
+    height: 80px;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.invalid-feedback {
+    display: none;
+}
+
+button {
+    margin: 0px 15px 10px;
+}
+
+.input {
+    border: 4px solid rgb(112, 111, 111);
+    border-radius: 7px;
+}
+
+.gut {
+    border-color: green !important;
+}
+
+.bad {
+    border-color: red !important;
+}
+
+.error {
+    display: none;
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+#validarT {
+    display: none;
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+}

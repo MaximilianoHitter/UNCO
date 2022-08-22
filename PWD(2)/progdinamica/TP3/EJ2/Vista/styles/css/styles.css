@@ -1,0 +1,16 @@
+body {
+    background-color: aqua;
+    margin: 0 auto;
+}
+
+form {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 700px;
+    margin: 20px auto
+}
+
+#validarT {
+    display: none;
+}
